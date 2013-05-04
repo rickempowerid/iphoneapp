@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "SplashViewController.h"
 
 @implementation AppDelegate
 
@@ -16,10 +17,15 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryBoard" bundle: nil];
+    SplashViewController *viewCon = [storyboard instantiateViewControllerWithIdentifier:@"SplashViewController"];
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
-    self.window.backgroundColor = [UIColor whiteColor];
+    
+    [self.window setRootViewController:viewCon];
+    [self.window setBackgroundColor:[UIColor whiteColor]];
     [self.window makeKeyAndVisible];
+
     return YES;
 }
 
@@ -42,7 +48,7 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+ 
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
