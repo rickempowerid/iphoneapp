@@ -63,6 +63,7 @@
                             nil];
     
     NSMutableURLRequest *request = [httpClient requestWithMethod:@"POST" path:@"" parameters:params];
+    [request setValue:[self getAuthenticationHeader:@"empoweridadmin" password:@"p@$$w0rd"] forHTTPHeaderField:@"Authorization"];
     
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
                                                                                         success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {

@@ -7,7 +7,7 @@
 //
 
 #import "SplashViewController.h"
-#import "TaskTableViewController.h"
+#import "LoginController.h"
 
 @interface SplashViewController ()
 
@@ -27,8 +27,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryBoard" bundle: nil];
-    TaskTableViewController *lvc = [storyboard instantiateViewControllerWithIdentifier:@"TaskTableViewController"];
+    wait((int*)4);
+	//UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryBoard" bundle: nil];
+    //LoginController *lvc = [storyboard instantiateViewControllerWithIdentifier:@"LoginController"];
+//    [self transitionFromViewController:self toViewController:lvc duration:1.0 options:UIViewAnimationOptionTransitionNone animations:nil completion:^(BOOL finished) {  }];
+    
 }
 
 - (void)didReceiveMemoryWarning

@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface TaskTableViewController : UITableViewController <UITableViewDataSource>
+@property (strong, nonatomic) NSArray *taskData;
 
+@property (strong, nonatomic) NSArray *finishedLoading;
 @end

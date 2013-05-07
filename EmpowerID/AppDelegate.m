@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "SplashViewController.h"
+#import "LoginController.h"
 
 @implementation AppDelegate
 
@@ -18,7 +19,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryBoard" bundle: nil];
-    SplashViewController *viewCon = [storyboard instantiateViewControllerWithIdentifier:@"SplashViewController"];
+    LoginController *viewCon = [storyboard instantiateViewControllerWithIdentifier:@"LoginController"];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     

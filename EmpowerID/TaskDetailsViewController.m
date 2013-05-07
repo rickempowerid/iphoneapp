@@ -8,11 +8,10 @@
 
 #import "TaskDetailsViewController.h"
 
-@interface TaskDetailsViewController ()
-
-@end
 
 @implementation TaskDetailsViewController
+
+@synthesize data;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

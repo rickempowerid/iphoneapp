@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12A269" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="iy6-rU-XSG">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12A269" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vfy-Vy-AoQ">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
@@ -22,7 +22,7 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <connections>
-                                    <segue destination="hHQ-p7-qJX" kind="modal" id="EUe-uO-buQ"/>
+                                    <segue destination="hHQ-p7-qJX" kind="push" id="EUe-uO-buQ"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -41,7 +41,7 @@
             <objects>
                 <viewController id="hHQ-p7-qJX" customClass="TaskDetailsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DHd-95-fcF">
-                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -97,7 +97,7 @@
         <!--Login Controller-->
         <scene sceneID="wqe-Pd-z1W">
             <objects>
-                <viewController id="vfy-Vy-AoQ" customClass="LoginController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginController" id="vfy-Vy-AoQ" customClass="LoginController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SVe-As-0Co">
                         <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -112,7 +112,7 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EUT-kj-BFk">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h60-P4-JpL">
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Login">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -122,36 +122,34 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="loginClicked:" destination="vfy-Vy-AoQ" eventType="touchUpInside" id="hDi-KT-L2U"/>
+                                    <action selector="loginClicked:" destination="vfy-Vy-AoQ" eventType="touchUpInside" id="btJ-Dg-kEE"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mjb-UK-fQa" userLabel="textUsername">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Hj4-5k-dOx">
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="142" id="XSq-aH-wd9"/>
-                                    <constraint firstAttribute="height" constant="30" id="rcD-uw-h3v"/>
+                                    <constraint firstAttribute="width" constant="164" id="J90-UH-bsW"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cEG-b3-kL3" userLabel="textPassword">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ozt-HA-3ag">
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="EUT-kj-BFk" firstAttribute="top" secondItem="SVe-As-0Co" secondAttribute="top" constant="193" id="1g3-TQ-kWG"/>
-                            <constraint firstItem="RSD-Fe-HJV" firstAttribute="top" secondItem="SVe-As-0Co" secondAttribute="top" constant="106" id="5lr-TC-2D2"/>
-                            <constraint firstItem="mjb-UK-fQa" firstAttribute="trailing" secondItem="cEG-b3-kL3" secondAttribute="trailing" type="default" id="DYt-cB-FIP"/>
-                            <constraint firstItem="mjb-UK-fQa" firstAttribute="top" secondItem="SVe-As-0Co" secondAttribute="top" constant="102" id="G4W-Ug-x4Z"/>
-                            <constraint firstItem="mjb-UK-fQa" firstAttribute="baseline" secondItem="RSD-Fe-HJV" secondAttribute="baseline" type="default" id="Oz3-5u-WcO"/>
                             <constraint firstItem="vdc-l5-Gv2" firstAttribute="leading" secondItem="RSD-Fe-HJV" secondAttribute="leading" type="default" id="PDa-UA-M3w"/>
-                            <constraint firstItem="cEG-b3-kL3" firstAttribute="top" secondItem="SVe-As-0Co" secondAttribute="top" constant="146" id="TLc-iX-FT0"/>
-                            <constraint firstItem="cEG-b3-kL3" firstAttribute="baseline" secondItem="vdc-l5-Gv2" secondAttribute="baseline" type="default" id="ez0-L4-yiw"/>
+                            <constraint firstItem="Hj4-5k-dOx" firstAttribute="top" secondItem="SVe-As-0Co" secondAttribute="top" constant="102" id="Qw8-bI-vFy"/>
+                            <constraint firstAttribute="trailing" secondItem="ozt-HA-3ag" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="Rub-sV-MBY"/>
+                            <constraint firstAttribute="trailing" secondItem="Hj4-5k-dOx" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="ZCH-eg-Sjd"/>
                             <constraint firstItem="RSD-Fe-HJV" firstAttribute="leading" secondItem="SVe-As-0Co" secondAttribute="leading" constant="46" id="fQZ-Hv-9WJ"/>
-                            <constraint firstItem="cEG-b3-kL3" firstAttribute="leading" secondItem="mjb-UK-fQa" secondAttribute="leading" type="default" id="i08-YW-em1"/>
-                            <constraint firstItem="EUT-kj-BFk" firstAttribute="leading" secondItem="cEG-b3-kL3" secondAttribute="leading" type="default" id="luI-tu-WQg"/>
-                            <constraint firstItem="mjb-UK-fQa" firstAttribute="leading" secondItem="SVe-As-0Co" secondAttribute="leading" constant="144" id="wuB-3a-QNE"/>
+                            <constraint firstItem="ozt-HA-3ag" firstAttribute="leading" secondItem="h60-P4-JpL" secondAttribute="leading" type="default" id="g82-jl-esb"/>
+                            <constraint firstItem="vdc-l5-Gv2" firstAttribute="top" secondItem="SVe-As-0Co" secondAttribute="top" constant="149" id="lPA-u5-GeL"/>
+                            <constraint firstItem="h60-P4-JpL" firstAttribute="top" secondItem="SVe-As-0Co" secondAttribute="top" constant="188" id="rQN-YR-DXh"/>
+                            <constraint firstItem="RSD-Fe-HJV" firstAttribute="top" secondItem="SVe-As-0Co" secondAttribute="top" constant="106" id="uJE-hf-ym2"/>
+                            <constraint firstItem="ozt-HA-3ag" firstAttribute="top" secondItem="SVe-As-0Co" secondAttribute="top" constant="145" id="ufB-4E-MnP"/>
+                            <constraint firstItem="ozt-HA-3ag" firstAttribute="leading" secondItem="Hj4-5k-dOx" secondAttribute="leading" type="default" id="z4z-R5-dOu"/>
                         </constraints>
                     </view>
                 </viewController>

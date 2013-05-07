@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface TaskDetailsViewController : UIViewController
-
+@property (strong, atomic) NSObject* data;
 @end
