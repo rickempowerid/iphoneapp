@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TaskDetailsViewController : UIViewController
+@interface TaskDetailsViewController : UITableViewController<UITableViewDataSource>
 @property (strong, atomic) NSObject* data;
 @end

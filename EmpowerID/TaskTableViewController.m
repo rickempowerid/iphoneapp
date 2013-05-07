@@ -55,9 +55,10 @@
 -(void)loadData
 {
     [Helpers LoadData:@"BusinessProcessTaskView" methodName:@"GetMyTasks" includedProperties:[[NSArray alloc] init] parameters:[[NSArray alloc] init] success:^(id JSON) {
-        
+        //set self.taskdata to list of items
+        [self.tableView reloadData];
     } failure:^(NSError *error, id JSON) {
-
+//show error
     }];
 }
 #pragma mark -
