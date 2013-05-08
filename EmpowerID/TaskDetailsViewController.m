@@ -9,6 +9,10 @@
 #import "TaskDetailsViewController.h"
 
 
+@implementation BusinessProcessTask
+
+
+@end
 @implementation TaskDetailsViewController
 
 @synthesize data;
@@ -24,7 +28,7 @@
     // Scroll the table view to the top before it appears
     [self.tableView reloadData];
     [self.tableView setContentOffset:CGPointZero animated:NO];
-    self.title = data.status;
+    self.title = data.Status;
 }
 
 
@@ -51,7 +55,7 @@
             break;
         case 2:
             // For the characters section, there are as many rows as there are characters.
-            rows = [data.decisions count];
+            rows = [data.Decisions count];
             break;
         default:
             break;
@@ -79,14 +83,14 @@
     
     switch (indexPath.section) {
         case 0: //Name
-            cellText = [dateFormatter stringFromDate:play.date];
+            cellText = data.Name;
             break;
         case 1: //Description
-            cellText = play.genre;
+            cellText = data.Description;
             break;
         case 2: //Status
-            if(data.DecisionType == )
-            cellText =
+            
+            //cellText =
             break;
         default:
             break;
@@ -108,13 +112,13 @@
     NSString *title = nil;
     switch (section) {
         case 0:
-            title = NSLocalizedString(@"Date", @"Name");
+            title = @"Name";
             break;
         case 1:
-            title = NSLocalizedString(@"Genre", @"Description);
+            title =  @"Description";
             break;
         case 2:
-            title = NSLocalizedString(@"Main Characters", @"Status");
+            title = @"Status";
             break;
         default:
             break;

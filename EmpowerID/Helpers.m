@@ -14,7 +14,13 @@
 static NSString* token;
 + (NSString*) token
 { @synchronized(self) { return token; } }
-+ (void) settoken:(NSString*)val
++ (void) setToken:(NSString*)val
+{ @synchronized(self) { token = val; } }
+
+static NSString* refreshtoken;
++ (NSString*) refreshtoken
+{ @synchronized(self) { return refreshtoken; } }
++ (void) setRefreshtoken:(NSString*)val
 { @synchronized(self) { token = val; } }
 
 +(void)LoadData:(NSString*)typeName methodName:(NSString*)methodName includedProperties:(NSArray*)includedProperties parameters:(NSArray*)parameters success:(void (^)(id JSON))success

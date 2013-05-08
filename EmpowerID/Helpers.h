@@ -10,7 +10,9 @@
 
 @interface Helpers : NSObject
 +(NSString*) token;
-+(void) settoken: (NSString*) value;
++(void) setToken: (NSString*) value;
++(NSString*) refreshtoken;
++(void) setRefreshoken: (NSString*) value;
 
 +(void)LoadData:(NSString*)typeName methodName:(NSString*)methodName includedProperties:(NSArray*)includedProperties parameters:(NSArray*)parameters success:(void (^)(id JSON))success
         failure:(void (^)(NSError *error, id JSON))failure;
