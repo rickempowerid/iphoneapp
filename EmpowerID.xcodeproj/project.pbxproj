@@ -33,6 +33,8 @@
 		1D88ADB11734D769002F72B8 /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D88ADA61734D769002F72B8 /* AFURLConnectionOperation.m */; };
 		1D88ADB21734D769002F72B8 /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D88ADA81734D769002F72B8 /* AFXMLRequestOperation.m */; };
 		1D88ADB31734D769002F72B8 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D88ADAA1734D769002F72B8 /* UIImageView+AFNetworking.m */; };
+		1D88ADB617388CC8002F72B8 /* Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D88ADB517388CC8002F72B8 /* Helpers.m */; };
+		1D88ADE8173B05F8002F72B8 /* Globals.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D88ADE7173B05F8002F72B8 /* Globals.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -81,6 +83,10 @@
 		1D88ADA81734D769002F72B8 /* AFXMLRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFXMLRequestOperation.m; sourceTree = "<group>"; };
 		1D88ADA91734D769002F72B8 /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+AFNetworking.h"; sourceTree = "<group>"; };
 		1D88ADAA1734D769002F72B8 /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
+		1D88ADB417388CC7002F72B8 /* Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Helpers.h; sourceTree = "<group>"; };
+		1D88ADB517388CC8002F72B8 /* Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Helpers.m; sourceTree = "<group>"; };
+		1D88ADE6173B05F8002F72B8 /* Globals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Globals.h; sourceTree = "<group>"; };
+		1D88ADE7173B05F8002F72B8 /* Globals.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Globals.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +151,10 @@
 				1D88AD7E1734B2E1002F72B8 /* LoginController.m */,
 				1D88AD801734CFE2002F72B8 /* Base64Utility.h */,
 				1D88AD811734CFE2002F72B8 /* Base64Utility.m */,
+				1D88ADB417388CC7002F72B8 /* Helpers.h */,
+				1D88ADB517388CC8002F72B8 /* Helpers.m */,
+				1D88ADE6173B05F8002F72B8 /* Globals.h */,
+				1D88ADE7173B05F8002F72B8 /* Globals.m */,
 			);
 			path = EmpowerID;
 			sourceTree = "<group>";
@@ -272,6 +282,8 @@
 				1D88ADB11734D769002F72B8 /* AFURLConnectionOperation.m in Sources */,
 				1D88ADB21734D769002F72B8 /* AFXMLRequestOperation.m in Sources */,
 				1D88ADB31734D769002F72B8 /* UIImageView+AFNetworking.m in Sources */,
+				1D88ADB617388CC8002F72B8 /* Helpers.m in Sources */,
+				1D88ADE8173B05F8002F72B8 /* Globals.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
