@@ -11,6 +11,7 @@
 #import "Base64Utility.h"
 #import "AFHTTPClient.h"
 #import "Helpers.h"
+#import "Globals.h"
 
 @interface LoginController ()
 
@@ -27,12 +28,14 @@
     return self;
 }
 - (IBAction)loginClicked:(id)sender {
+    [self.progressIndicator startAnimating];
     [self processLogin];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    _textUsername.text = @"empoweridadmin";
 	// Do any additional setup after loading the view.
 }
 
@@ -84,12 +87,32 @@
                                                                                         success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
                                                                                             NSLog(@"Success");
                                                                                             NSLog(@"%@",JSON);
-                                                                                            Helpers.token = (NSString*)[JSON objectForKey:@"access_token"];
-                                                                                            [self transitionToView];
+                                                                                            [Globals sharedManager].token = (NSString*)[JSON objectForKey:@"access_token"];
+                                                                                            //NSLog((NSString*)[Helpers getToken]);
+                                                                                            if([Globals sharedManager].token == nil || [[Globals sharedManager].token isEqualToString:@""])
+                                                                                            {
+                                                                                                [Helpers showMessageBox:@"Failure" description:(NSString*)[JSON objectForKey:@"error"]];
+                                                                                            
+                                                                                            }
+                                                                                            else
+                                                                                            {
+                                                                                                [self transitionToView];
+
+                                                                                            }
+                                                                                            [self.progressIndicator stopAnimating];
                                                                                             
                                                                                         } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
                                                                                             NSLog(@"Request Failed with Error: %@, %@", error, error.userInfo);
                                                                                             NSLog(@"Failure");
+                                                                                            [self.progressIndicator stopAnimating];
+                                                                                            if(response.statusCode == 404)
+                                                                                            {
+                                                                                                [Helpers showMessageBox:@"Failure" description:@"Could not connect to the server"];
+                                                                                            }
+                                                                                            else
+                                                                                            {
+                                                                                                [Helpers showMessageBox:@"Failure" description:@"Incorrect username or password"];
+                                                                                            }
                                                                                         }];
     
     [operation start];

@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface LoginController : UIViewController
+@property (weak, nonatomic) IBOutlet UITextField *textUsername;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *progressIndicator;
+@property (weak, nonatomic) IBOutlet UITextField *textPassword;
 
 @end

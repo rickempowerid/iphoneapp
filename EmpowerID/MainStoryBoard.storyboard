@@ -191,22 +191,30 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="3Tm-XX-kml"/>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="3Tm-XX-kml" firstAttribute="centerX" secondItem="SVe-As-0Co" secondAttribute="centerX" type="default" id="65g-KG-I5p"/>
+                            <constraint firstItem="3Tm-XX-kml" firstAttribute="top" secondItem="SVe-As-0Co" secondAttribute="top" constant="239" id="Ddx-GU-Bys"/>
                             <constraint firstItem="vdc-l5-Gv2" firstAttribute="leading" secondItem="RSD-Fe-HJV" secondAttribute="leading" type="default" id="PDa-UA-M3w"/>
                             <constraint firstItem="Hj4-5k-dOx" firstAttribute="top" secondItem="SVe-As-0Co" secondAttribute="top" constant="102" id="Qw8-bI-vFy"/>
                             <constraint firstAttribute="trailing" secondItem="ozt-HA-3ag" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="Rub-sV-MBY"/>
                             <constraint firstAttribute="trailing" secondItem="Hj4-5k-dOx" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="ZCH-eg-Sjd"/>
                             <constraint firstItem="RSD-Fe-HJV" firstAttribute="leading" secondItem="SVe-As-0Co" secondAttribute="leading" constant="46" id="fQZ-Hv-9WJ"/>
                             <constraint firstItem="ozt-HA-3ag" firstAttribute="leading" secondItem="h60-P4-JpL" secondAttribute="leading" type="default" id="g82-jl-esb"/>
+                            <constraint firstItem="3Tm-XX-kml" firstAttribute="top" secondItem="h60-P4-JpL" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="iMm-3j-z4P"/>
                             <constraint firstItem="vdc-l5-Gv2" firstAttribute="top" secondItem="SVe-As-0Co" secondAttribute="top" constant="149" id="lPA-u5-GeL"/>
-                            <constraint firstItem="h60-P4-JpL" firstAttribute="top" secondItem="SVe-As-0Co" secondAttribute="top" constant="188" id="rQN-YR-DXh"/>
                             <constraint firstItem="RSD-Fe-HJV" firstAttribute="top" secondItem="SVe-As-0Co" secondAttribute="top" constant="106" id="uJE-hf-ym2"/>
                             <constraint firstItem="ozt-HA-3ag" firstAttribute="top" secondItem="SVe-As-0Co" secondAttribute="top" constant="145" id="ufB-4E-MnP"/>
                             <constraint firstItem="ozt-HA-3ag" firstAttribute="leading" secondItem="Hj4-5k-dOx" secondAttribute="leading" type="default" id="z4z-R5-dOu"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="progressIndicator" destination="3Tm-XX-kml" id="C0U-BE-Jvu"/>
+                        <outlet property="textPassword" destination="ozt-HA-3ag" id="wbE-Rq-ZjP"/>
+                        <outlet property="textUsername" destination="Hj4-5k-dOx" id="9hR-0J-YmH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jjm-No-fIx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

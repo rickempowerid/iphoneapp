@@ -9,19 +9,10 @@
 #import "Helpers.h"
 #import "AFHTTPClient.h"
 #import "AFJSONRequestOperation.h"
-
+#import "Globals.h"
 @implementation Helpers
-static NSString* token;
-+ (NSString*) token
-{ @synchronized(self) { return token; } }
-+ (void) setToken:(NSString*)val
-{ @synchronized(self) { token = val; } }
 
-static NSString* refreshtoken;
-+ (NSString*) refreshtoken
-{ @synchronized(self) { return refreshtoken; } }
-+ (void) setRefreshtoken:(NSString*)val
-{ @synchronized(self) { token = val; } }
+
 
 +(void)LoadData:(NSString*)typeName methodName:(NSString*)methodName includedProperties:(NSArray*)includedProperties parameters:(NSArray*)parameters success:(void (^)(id JSON))success
         failure:(void (^)(NSError *error, id JSON))failure
@@ -51,7 +42,7 @@ static NSString* refreshtoken;
 
     
     NSMutableURLRequest *request = [httpClient requestWithMethod:@"POST" path:@"" parameters: nil];
-    [request setValue:Helpers.token forHTTPHeaderField:@"Authorization"];
+    [request setValue:[Globals sharedManager].token forHTTPHeaderField:@"Authorization"];
     [request setHTTPBody: requestData];
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
                                                                                         success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
@@ -67,4 +58,15 @@ static NSString* refreshtoken;
     
     [operation start];
 }
++(void)showMessageBox: (NSString *)message description:(NSString*)description
+{
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:message
+                                                    message:description
+                                                   delegate:nil
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil];
+    [alert show];
+}
+
 @end
