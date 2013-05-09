@@ -10,7 +10,7 @@
 
 @interface Helpers : NSObject
 extern NSString* token;
-
++(void) setupLogoutButton: (UIViewController*) view;
 +(NSString*)getAuthenticationHeader;
 +(void)LoadData:(NSString*)typeName methodName:(NSString*)methodName includedProperties:(NSArray*)includedProperties parameters:(NSArray*)parameters success:(void (^)(id JSON))success
         failure:(void (^)(NSError *error, id JSON))failure;

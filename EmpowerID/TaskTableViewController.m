@@ -21,23 +21,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.finishedLoading = [[NSArray alloc] init];
-    [self setupRefreshControl];
+    [Helpers setupLogoutButton:self];
     [self.progressIndicator startAnimating];
     [self loadData];
 	self.title = NSLocalizedString(@"Plays", @"Master view navigation title");
     
-    UIBarButtonItem *saveButton = [[UIBarButtonItem alloc]
-                                   initWithTitle:@"Logout"
-                                   style:UIBarButtonItemStylePlain
-                                   target:self
-                                   action:@selector(yourLogoutSelector)];
-    self.navigationItem.rightBarButtonItem = saveButton;
 
 }
--(void)yourLogoutSelector
-{
-    [Helpers logout:self];
-}
+
 
 
 #pragma mark -

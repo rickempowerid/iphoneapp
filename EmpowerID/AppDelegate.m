@@ -54,6 +54,7 @@
 }
 -(void)showLoginScreen
 {
+    [Globals sharedManager].token = @"";
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryBoard" bundle: nil];
     LoginController *viewCon = [storyboard instantiateViewControllerWithIdentifier:@"LoginController"];
     

@@ -66,8 +66,21 @@
     
     [operation start];
 }
++(void) setupLogoutButton: (UIViewController*) view
+{
+    UIBarButtonItem *saveButton = [[UIBarButtonItem alloc]
+                                   initWithTitle:@"Logout"
+                                   style:UIBarButtonItemStylePlain
+                                   target:[UIApplication sharedApplication].delegate
+                                   action:@selector(logout)];
+    view.navigationItem.rightBarButtonItem = saveButton;
+    
+    
+}
 +(void)logout: (UIViewController*)view
 {
+    [Globals sharedManager].token = @"";
+    
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryBoard" bundle: nil];
     LoginController *lvc = [storyboard instantiateViewControllerWithIdentifier:@"LoginController"];
     [view presentViewController:lvc animated:YES completion: nil];

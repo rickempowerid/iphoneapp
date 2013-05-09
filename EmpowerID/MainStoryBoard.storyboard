@@ -111,10 +111,10 @@
             </objects>
             <point key="canvasLocation" x="-163" y="662"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Main Tab Controller View Controller-->
         <scene sceneID="GuJ-TR-K8g">
             <objects>
-                <tabBarController storyboardIdentifier="MainToolbar" definesPresentationContext="YES" id="FvN-xp-Ckh" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="MainToolbar" definesPresentationContext="YES" id="FvN-xp-Ckh" customClass="MainTabControllerViewController" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="IUL-Dq-zR4">
                         <rect key="frame" x="129" y="330" width="163" height="49"/>
