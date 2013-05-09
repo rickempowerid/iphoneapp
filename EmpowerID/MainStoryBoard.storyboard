@@ -12,7 +12,7 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <activityIndicatorView key="tableFooterView" opaque="NO" contentMode="scaleToFill" style="gray" id="y54-WV-itg">
+                        <activityIndicatorView key="tableFooterView" hidden="YES" opaque="NO" contentMode="scaleToFill" hidesWhenStopped="YES" style="gray" id="y54-WV-itg">
                             <rect key="frame" x="0.0" y="66" width="320" height="20"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </activityIndicatorView>
@@ -34,7 +34,13 @@
                     <navigationItem key="navigationItem" title="Root View Controller" id="aKo-j3-bO7"/>
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="qLC-aW-Gap">
                         <autoresizingMask key="autoresizingMask"/>
+                        <connections>
+                            <action selector="editingBegan:" destination="RW0-BK-Fz7" eventType="editingDidBegin" id="NLT-Ru-g8n"/>
+                        </connections>
                     </refreshControl>
+                    <connections>
+                        <outlet property="progressIndicator" destination="y54-WV-itg" id="HUl-DY-OT7"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r1a-0k-EBB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

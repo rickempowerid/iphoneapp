@@ -13,17 +13,45 @@
 @implementation TaskTableViewController
 
 #pragma mark View lifecycle
+@synthesize taskData;
+- (IBAction)editingBegan:(id)sender {
+    [self loadData];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.finishedLoading = [[NSArray alloc] init];
+    [self setupRefreshControl];
+    [self.progressIndicator startAnimating];
+    [self loadData];
 	self.title = NSLocalizedString(@"Plays", @"Master view navigation title");
+    
+    UIBarButtonItem *saveButton = [[UIBarButtonItem alloc]
+                                   initWithTitle:@"Logout"
+                                   style:UIBarButtonItemStylePlain
+                                   target:self
+                                   action:@selector(yourLogoutSelector)];
+    self.navigationItem.rightBarButtonItem = saveButton;
+
+}
+-(void)yourLogoutSelector
+{
+    [Helpers logout:self];
 }
 
 
 #pragma mark -
 #pragma mark Table view data source
-
+-(void) setupRefreshControl
+{
+    [self.refreshControl endRefreshing];
+    [self.refreshControl addTarget:self action:@selector(refreshControlRequest) forControlEvents:UIControlEventValueChanged];
+    //self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"Updating..."];
+}
+-(void)refreshControlRequest
+{
+    [self loadData];
+}
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Only one section.
     return 1;
@@ -54,11 +82,15 @@
 
 -(void)loadData
 {
-    [Helpers LoadData:@"BusinessProcessTaskView" methodName:@"GetMyTasks" includedProperties:[[NSArray alloc] init] parameters:[[NSArray alloc] init] success:^(id JSON) {
-        //set self.taskdata to list of items
+    [Helpers LoadData:@"BusinessProcessTaskView" methodName:@"GetMyTasks" includedProperties:[[NSArray alloc] init] parameters:[[NSDictionary alloc] init] success:^(id JSON) {
+        self.taskData = (NSArray*)[(NSDictionary*)JSON objectForKey:@"Data"];
         [self.tableView reloadData];
+        [self.refreshControl endRefreshing];
+        [self.progressIndicator stopAnimating];
     } failure:^(NSError *error, id JSON) {
-//show error
+        [self.progressIndicator stopAnimating];
+        [self.refreshControl endRefreshing];
+        [Helpers showMessageBox:@"error" description:@"an error occurred"];
     }];
 }
 #pragma mark -

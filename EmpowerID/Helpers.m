@@ -10,16 +10,24 @@
 #import "AFHTTPClient.h"
 #import "AFJSONRequestOperation.h"
 #import "Globals.h"
+#include "Base64Utility.h"
+#import "LoginController.h"
+
 @implementation Helpers
+ 
++(NSString*)getAuthenticationHeader
+{
+    NSString* message = [NSString stringWithFormat:@"Bearer %@", [Globals sharedManager].token];
+    return message;
+}
 
-
-
-+(void)LoadData:(NSString*)typeName methodName:(NSString*)methodName includedProperties:(NSArray*)includedProperties parameters:(NSArray*)parameters success:(void (^)(id JSON))success
++(void)LoadData:(NSString*)typeName methodName:(NSString*)methodName includedProperties:(NSArray*)includedProperties parameters:(NSDictionary*)parameters success:(void (^)(id JSON))success
         failure:(void (^)(NSError *error, id JSON))failure
 {
-    NSURL *url = [NSURL URLWithString:@"https://sso.empowerid.com/api/v1/query"];
+    
+    NSURL *url = [NSURL URLWithString:@"https://sso.empowerid.com/EmpowerIDv5/api/v1/query"];
     NSDictionary* data = [[NSDictionary alloc] initWithObjectsAndKeys:
-                            @"MethodName", methodName, @"TypeName", typeName, @"IncludedProperties", includedProperties, @"Parameters", parameters, nil];
+                            methodName, @"MethodName" , typeName, @"TypeName", includedProperties, @"IncludedProperties", [Helpers buildParameters:parameters], @"Parameters" , nil];
     
     NSError *error;
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:data
@@ -32,8 +40,8 @@
     } else {
         jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
     }
-    
-    
+    NSLog(jsonString);
+    NSLog(@"writing HEADER %@", [Helpers getAuthenticationHeader]);
     AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:url];
     [httpClient registerHTTPOperationClass:[AFJSONRequestOperation class]];
     [httpClient setDefaultHeader:@"Accept" value:@"application/json"];
@@ -42,7 +50,7 @@
 
     
     NSMutableURLRequest *request = [httpClient requestWithMethod:@"POST" path:@"" parameters: nil];
-    [request setValue:[Globals sharedManager].token forHTTPHeaderField:@"Authorization"];
+    [request setValue:[Helpers getAuthenticationHeader] forHTTPHeaderField:@"Authorization"];
     [request setHTTPBody: requestData];
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
                                                                                         success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
@@ -57,6 +65,25 @@
                                                                                         }];
     
     [operation start];
+}
++(void)logout: (UIViewController*)view
+{
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryBoard" bundle: nil];
+    LoginController *lvc = [storyboard instantiateViewControllerWithIdentifier:@"LoginController"];
+    [view presentViewController:lvc animated:YES completion: nil];
+}
++(NSMutableArray*) buildParameters: (NSDictionary*) dict
+{
+    NSMutableArray *list = [[NSMutableArray alloc] init];
+    
+    for (NSString* key in dict) {
+        NSDictionary *d1 = [[NSDictionary alloc] initWithObjectsAndKeys:[dict objectForKey:key], @"Value", key, @"Key", nil];
+        
+        [list addObject:d1];
+        
+    }
+    return list;
+    
 }
 +(void)showMessageBox: (NSString *)message description:(NSString*)description
 {
