@@ -12,7 +12,7 @@
 extern NSString* token;
 +(void) setupLogoutButton: (UIViewController*) view;
 +(NSString*)getAuthenticationHeader;
-+(void)LoadData:(NSString*)typeName methodName:(NSString*)methodName includedProperties:(NSArray*)includedProperties parameters:(NSArray*)parameters success:(void (^)(id JSON))success
++(void)LoadData:(NSString*)typeName methodName:(NSString*)methodName includedProperties:(NSArray*)includedProperties parameters:(NSDictionary*)parameters success:(void (^)(id JSON))success
         failure:(void (^)(NSError *error, id JSON))failure;
 +(void)showMessageBox: (NSString *)message description:(NSString*)description;
 +(void)logout: (UIViewController*)view;

@@ -29,6 +29,7 @@
     NSDictionary* data = [[NSDictionary alloc] initWithObjectsAndKeys:
                             methodName, @"MethodName" , typeName, @"TypeName", includedProperties, @"IncludedProperties", [Helpers buildParameters:parameters], @"Parameters" , nil];
     
+    NSDictionary *params = [[NSDictionary alloc] init];
     NSError *error;
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:data
                                                        options:NSJSONWritingPrettyPrinted // Pass 0 if you don't care about the readability of the generated string
@@ -40,18 +41,21 @@
     } else {
         jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
     }
-    NSLog(jsonString);
+    
     NSLog(@"writing HEADER %@", [Helpers getAuthenticationHeader]);
     AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:url];
     [httpClient registerHTTPOperationClass:[AFJSONRequestOperation class]];
     [httpClient setDefaultHeader:@"Accept" value:@"application/json"];
     
+    
     NSData *requestData = [NSData dataWithBytes:[jsonString UTF8String] length:[jsonString length]];
 
     
-    NSMutableURLRequest *request = [httpClient requestWithMethod:@"POST" path:@"" parameters: nil];
+    NSMutableURLRequest *request = [httpClient requestWithMethod:@"POST" path:@"" parameters: params];
     [request setValue:[Helpers getAuthenticationHeader] forHTTPHeaderField:@"Authorization"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request setHTTPBody: requestData];
+    NSLog(@"%@", jsonString);
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
                                                                                         success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
                                                                                             success(JSON);
@@ -90,7 +94,7 @@
     NSMutableArray *list = [[NSMutableArray alloc] init];
     
     for (NSString* key in dict) {
-        NSDictionary *d1 = [[NSDictionary alloc] initWithObjectsAndKeys:[dict objectForKey:key], @"Value", key, @"Key", nil];
+        NSDictionary *d1 = [[NSDictionary alloc] initWithObjectsAndKeys:[dict objectForKey:key], @"Value", key, @"Name", nil];
         
         [list addObject:d1];
         

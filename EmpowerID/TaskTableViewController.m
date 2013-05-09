@@ -24,8 +24,6 @@
     [Helpers setupLogoutButton:self];
     [self.progressIndicator startAnimating];
     [self loadData];
-	self.title = NSLocalizedString(@"Plays", @"Master view navigation title");
-    
 
 }
 
@@ -73,7 +71,9 @@
 
 -(void)loadData
 {
-    [Helpers LoadData:@"BusinessProcessTaskView" methodName:@"GetMyTasks" includedProperties:[[NSArray alloc] init] parameters:[[NSDictionary alloc] init] success:^(id JSON) {
+    NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys:(@"0", @"start", @"10", @"pageLength", @"", @"columnsToSearch", @"", @"textToSearch" , nil];
+    
+    [Helpers LoadData:@"BusinessProcessTaskView" methodName:@"GetMyTasks" includedProperties:[[NSArray alloc] init] parameters:dict success:^(id JSON) {
         self.taskData = (NSArray*)[(NSDictionary*)JSON objectForKey:@"Data"];
         [self.tableView reloadData];
         [self.refreshControl endRefreshing];

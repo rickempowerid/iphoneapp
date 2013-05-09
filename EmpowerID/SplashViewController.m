@@ -99,9 +99,9 @@
                                                                                             }
                                                                                             else
                                                                                             {
-                                                                                                NSScanner *scanner = [[NSScanner alloc] initWithString:[JSON objectForKey:@"expires_in"]];
-                                                                                                NSInteger integer;
-                                                                                                [scanner scanInteger:&integer];
+                                                                                                
+                                                                                                int integer = (int)[JSON objectForKey:@"expires_in"];
+                                                                                                
                                                                                                 NSDate *expires = [[NSDate alloc] dateByAddingTimeInterval:(60*integer)];
                                                                                                 
                                                                                                 [Globals sharedManager].refreshtoken = (NSString*)[JSON objectForKey:@"refresh_token"];
@@ -127,7 +127,7 @@
 {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryBoard" bundle: nil];
     UITabBarController *lvc = [storyboard instantiateViewControllerWithIdentifier:@"MainToolbar"];
-    [self presentViewController:lvc animated:YES completion: nil];
+    [self presentViewController:lvc animated:NO completion: nil];
     //[self transitionFromViewController:self toViewController:lvc duration:1.0 options:UIViewAnimationOptionTransitionNone animations:nil completion:^(BOOL finished) {  }];
 }
 -(void) checkToken

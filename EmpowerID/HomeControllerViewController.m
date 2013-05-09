@@ -1,18 +1,19 @@
 //
-//  MainTabControllerViewController.m
+//  HomeControllerViewController.m
 //  EmpowerID
 //
 //  Created by R on 5/8/13.
 //  Copyright (c) 2013 R. All rights reserved.
 //
 
-#import "MainTabControllerViewController.h"
+#import "HomeControllerViewController.h"
 #import "Helpers.h"
-@interface MainTabControllerViewController ()
+
+@interface HomeControllerViewController ()
 
 @end
 
-@implementation MainTabControllerViewController
+@implementation HomeControllerViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -25,10 +26,8 @@
 
 - (void)viewDidLoad
 {
-    
     [super viewDidLoad];
     [Helpers setupLogoutButton:self];
-    [(UITabBarController*)self.navigationController.topViewController setSelectedIndex:2];
 	// Do any additional setup after loading the view.
 }
 
