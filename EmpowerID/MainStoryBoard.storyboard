@@ -195,8 +195,8 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="3Tm-XX-kml" firstAttribute="centerX" secondItem="SVe-As-0Co" secondAttribute="centerX" type="default" id="65g-KG-I5p"/>
                             <constraint firstItem="3Tm-XX-kml" firstAttribute="top" secondItem="SVe-As-0Co" secondAttribute="top" constant="239" id="Ddx-GU-Bys"/>
+                            <constraint firstItem="3Tm-XX-kml" firstAttribute="centerX" secondItem="SVe-As-0Co" secondAttribute="centerX" type="default" id="ODD-li-ncG"/>
                             <constraint firstItem="vdc-l5-Gv2" firstAttribute="leading" secondItem="RSD-Fe-HJV" secondAttribute="leading" type="default" id="PDa-UA-M3w"/>
                             <constraint firstItem="Hj4-5k-dOx" firstAttribute="top" secondItem="SVe-As-0Co" secondAttribute="top" constant="102" id="Qw8-bI-vFy"/>
                             <constraint firstAttribute="trailing" secondItem="ozt-HA-3ag" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="Rub-sV-MBY"/>

@@ -7,6 +7,11 @@
 //
 
 #import "SplashViewController.h"
+#import "AFJSONRequestOperation.h"
+#import "Base64Utility.h"
+#import "AFHTTPClient.h"
+#import "Helpers.h"
+#import "Globals.h"
 #import "LoginController.h"
 
 @interface SplashViewController ()
@@ -23,14 +28,18 @@
     }
     return self;
 }
-
+-(void) viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    [self checkToken];
+    
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    wait((int*)4);
-	//UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryBoard" bundle: nil];
-    //LoginController *lvc = [storyboard instantiateViewControllerWithIdentifier:@"LoginController"];
-//    [self transitionFromViewController:self toViewController:lvc duration:1.0 options:UIViewAnimationOptionTransitionNone animations:nil completion:^(BOOL finished) {  }];
+    //wait((int*)4);
+	
     
 }
 
@@ -39,5 +48,111 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+-(void)showLoginScreen
+{
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryBoard" bundle: nil];
+    LoginController *lvc = [storyboard instantiateViewControllerWithIdentifier:@"LoginController"];
+    [self presentViewController:lvc animated:YES completion: nil];
+}
+-(void)getKeyFromRefreshToken
+{
+    
+    NSURL *url = [NSURL URLWithString:@"https://sso.empowerid.com/EmpowerIDOAuth/oauth2/token"];
+    
+    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:url];
+    [httpClient registerHTTPOperationClass:[AFJSONRequestOperation class]];
+    [httpClient setDefaultHeader:@"Accept" value:@"application/json"];
+    NSDictionary *params = [[NSDictionary alloc] init];
+    
+    NSDictionary *data = [[NSDictionary alloc] initWithObjectsAndKeys:
+                          @"EF8BCFC5-1B66-44CD-835F-BD3BB199FFDE",@"client_id",  @"8E3E2ADE-0D43-473A-8DB9-0FD0BBF6139E",@"client_secret",  [Globals sharedManager].refreshtoken,@"refresh_token",  @"refresh_token", @"grant_type", nil];
+    
+    NSError *error;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:data
+                                                       options:NSJSONWritingPrettyPrinted // Pass 0 if you don't care about the readability of the generated string
+                                                         error:&error];
+    NSString *jsonString = nil;
+    
+    if (! jsonData) {
+        NSLog(@"Got an error: %@", error);
+    } else {
+        jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    }
+    
+    NSMutableURLRequest *request = [httpClient requestWithMethod:@"POST" path:@"" parameters: params];
+    //[request setValue:[self getAuthenticationHeader:@"empoweridadmin" password:@"p@$$w0rd"] forHTTPHeaderField:@"Authorization"];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    NSData *requestData = [NSData dataWithBytes:[jsonString UTF8String] length:[jsonString length]];
+    
+    [request setHTTPBody:requestData];
+    NSLog(@"%@", jsonString);
+    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
+                                                                                        success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+                                                                                            NSLog(@"Success");
+                                                                                            NSLog(@"%@",JSON);
+                                                                                            [Globals sharedManager].token = @"";
+                                                                                            
+                                                                                            
+                                                                                            //NSLog((NSString*)[Helpers getToken]);
+                                                                                            if([Globals sharedManager].token == nil || [[Globals sharedManager].token isEqualToString:@""])
+                                                                                            {
+                                                                                                [self showLoginScreen];
+                                                                                                
+                                                                                            }
+                                                                                            else
+                                                                                            {
+                                                                                                NSScanner *scanner = [[NSScanner alloc] initWithString:[JSON objectForKey:@"expires_in"]];
+                                                                                                NSInteger integer;
+                                                                                                [scanner scanInteger:&integer];
+                                                                                                NSDate *expires = [[NSDate alloc] dateByAddingTimeInterval:(60*integer)];
+                                                                                                
+                                                                                                [Globals sharedManager].refreshtoken = (NSString*)[JSON objectForKey:@"refresh_token"];
+                                                                                                [Globals sharedManager].token = (NSString*)[JSON objectForKey:@"access_token"];
+                                                                                                [Globals sharedManager].expires = expires;
+                                                                                                
+                                                                                                [self transitionToView];
+                                                                                                [Globals sharedManager].token = (NSString*)[JSON objectForKey:@"access_token"];
+                                                                                            }
+                                                                                            
+                                                                                            
+                                                                                        } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+                                                                                            NSLog(@"Request Failed with Error: %@, %@", error, error.userInfo);
+                                                                                            NSLog(@"Failure to get token from refresh token");
+                                                                                            
+                                                                                            [self showLoginScreen];
+                                                                                        }];
+    
+    [operation start];
+    
+}
+-(void)transitionToView
+{
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryBoard" bundle: nil];
+    UITabBarController *lvc = [storyboard instantiateViewControllerWithIdentifier:@"MainToolbar"];
+    [self presentViewController:lvc animated:YES completion: nil];
+    //[self transitionFromViewController:self toViewController:lvc duration:1.0 options:UIViewAnimationOptionTransitionNone animations:nil completion:^(BOOL finished) {  }];
+}
+-(void) checkToken
+{
+    if([[Globals sharedManager].token length] == 0)
+    {
+        [self showLoginScreen];
+        return;
+    }
+    
+    if([[Globals sharedManager].expires compare:[NSDate date]]==NSOrderedAscending)
+    {
+        [self transitionToView];
+        
+    }
+    else
+    {
+        [self getKeyFromRefreshToken];
+    }
 
+    
+    
+    
+    
+}
 @end

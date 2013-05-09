@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "SplashViewController.h"
 #import "LoginController.h"
+#import "Globals.h"
 
 @implementation AppDelegate
 
@@ -18,14 +19,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryBoard" bundle: nil];
-    LoginController *viewCon = [storyboard instantiateViewControllerWithIdentifier:@"LoginController"];
-    
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    
-    [self.window setRootViewController:viewCon];
-    [self.window setBackgroundColor:[UIColor whiteColor]];
-    [self.window makeKeyAndVisible];
+    [self showSplashScreen];
 
     return YES;
 }
@@ -46,10 +40,47 @@
 {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
 }
-
+-(void)showSplashScreen
+{
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryBoard" bundle: nil];
+    SplashViewController *viewCon = [storyboard instantiateViewControllerWithIdentifier:@"SplashViewController"];
+    
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    
+    [self.window setRootViewController:viewCon];
+    [self.window setBackgroundColor:[UIColor whiteColor]];
+    [self.window makeKeyAndVisible];
+    
+}
+-(void)showLoginScreen
+{
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryBoard" bundle: nil];
+    LoginController *viewCon = [storyboard instantiateViewControllerWithIdentifier:@"LoginController"];
+    
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    
+    [self.window setRootViewController:viewCon];
+    [self.window setBackgroundColor:[UIColor whiteColor]];
+    [self.window makeKeyAndVisible];
+    
+}
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
- 
+    if([[Globals sharedManager].token length] == 0)
+    {
+        [self showLoginScreen];
+        return;
+    }
+    
+    if([[Globals sharedManager].expires compare:[NSDate date]]==NSOrderedAscending)
+    {
+        [self showSplashScreen];
+        
+    }
+    else
+    {
+        [self showSplashScreen];
+    }
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application

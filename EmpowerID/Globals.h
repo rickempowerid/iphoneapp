@@ -13,6 +13,8 @@
 }
 
 @property (nonatomic, retain) NSString *token;
+@property (nonatomic, retain) NSString *refreshtoken;
+@property (nonatomic, retain) NSDate *expires;
 
 + (Globals*)sharedManager;
 
