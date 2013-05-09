@@ -37,6 +37,8 @@
 		1D88ADE8173B05F8002F72B8 /* Globals.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D88ADE7173B05F8002F72B8 /* Globals.m */; };
 		1D88ADEE173B70A9002F72B8 /* MainTabControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D88ADED173B70A9002F72B8 /* MainTabControllerViewController.m */; };
 		1D88ADF1173B7CC8002F72B8 /* HomeControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D88ADF0173B7CC8002F72B8 /* HomeControllerViewController.m */; };
+		1D88ADF3173B9403002F72B8 /* compare_headline_eid.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D88ADF2173B9402002F72B8 /* compare_headline_eid.png */; };
+		1D88ADF7173B95E7002F72B8 /* logo_header.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1D88ADF6173B95E7002F72B8 /* logo_header.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -93,6 +95,8 @@
 		1D88ADED173B70A9002F72B8 /* MainTabControllerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTabControllerViewController.m; sourceTree = "<group>"; };
 		1D88ADEF173B7CC8002F72B8 /* HomeControllerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeControllerViewController.h; sourceTree = "<group>"; };
 		1D88ADF0173B7CC8002F72B8 /* HomeControllerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeControllerViewController.m; sourceTree = "<group>"; };
+		1D88ADF2173B9402002F72B8 /* compare_headline_eid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = compare_headline_eid.png; sourceTree = "<group>"; };
+		1D88ADF6173B95E7002F72B8 /* logo_header.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = logo_header.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -172,6 +176,8 @@
 		1D88AD5917320257002F72B8 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				1D88ADF6173B95E7002F72B8 /* logo_header.jpg */,
+				1D88ADF2173B9402002F72B8 /* compare_headline_eid.png */,
 				1D88AD5A17320257002F72B8 /* EmpowerID-Info.plist */,
 				1D88AD5B17320257002F72B8 /* InfoPlist.strings */,
 				1D88AD5E17320257002F72B8 /* main.m */,
@@ -265,6 +271,8 @@
 				1D88AD6717320257002F72B8 /* Default@2x.png in Resources */,
 				1D88AD6917320257002F72B8 /* Default-568h@2x.png in Resources */,
 				1D88AD731732051C002F72B8 /* MainStoryBoard.storyboard in Resources */,
+				1D88ADF3173B9403002F72B8 /* compare_headline_eid.png in Resources */,
+				1D88ADF7173B95E7002F72B8 /* logo_header.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
