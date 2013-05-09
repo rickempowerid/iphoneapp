@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "__31-[LoginController processLogin]_block_invoke:LoginController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "[Helpers token]">
+            </PersistentString>
+            <PersistentString
+               value = "[Globals sharedManager].token">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "__31-[LoginController processLogin]_block_invoke123:LoginController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "response.statusCode">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[Globals token]:Globals.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "[[NSUserDefaults standardUserDefaults] setObject:s forKey:@&quot;EXPIRES&quot;]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "+[LoginController getAuthenticationHeader:password:]:LoginController.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[LoginController processLogin]:LoginController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "_textUsername.text">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>
