@@ -102,7 +102,7 @@
                                                                                                 
                                                                                                 int integer = (int)[JSON objectForKey:@"expires_in"];
                                                                                                 
-                                                                                                NSDate *expires = [[NSDate alloc] dateByAddingTimeInterval:(60*integer)];
+                                                                                                NSDate *expires = [[NSDate date] dateByAddingTimeInterval:(60*integer)];
                                                                                                 
                                                                                                 [Globals sharedManager].refreshtoken = (NSString*)[JSON objectForKey:@"refresh_token"];
                                                                                                 

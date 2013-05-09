@@ -55,15 +55,19 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
+    static NSString *CellIdentifier = @"TaskCellIdentifier";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     NSDictionary *tempDictionary= [self.taskData objectAtIndex:indexPath.row];
     
-    cell.textLabel.text = [tempDictionary objectForKey:@"name"];
+    cell.textLabel.text = [tempDictionary objectForKey:@"Name"];
+    
+    NSString *val = [tempDictionary objectForKey:@"FriendlyName"];
+
+    cell.detailTextLabel.text = val;
     
 
-    cell.detailTextLabel.text = [tempDictionary   objectForKey:@"description"];
+    
 
     
     return cell;
@@ -71,9 +75,9 @@
 
 -(void)loadData
 {
-    NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys:(@"0", @"start", @"10", @"pageLength", @"", @"columnsToSearch", @"", @"textToSearch" , nil];
+    NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys:@"0", @"start", @"10", @"pageLength", @"", @"columnsToSearch", @"", @"textToSearch", @"0", @"totalCount", nil];
     
-    [Helpers LoadData:@"BusinessProcessTaskView" methodName:@"GetMyTasks" includedProperties:[[NSArray alloc] init] parameters:dict success:^(id JSON) {
+    [Helpers LoadData:@"BusinessProcessTaskView" methodName:@"GetMyTasks" includedProperties:[[NSArray alloc] initWithObjects:@"Name",@"FriendlyName", nil] parameters:dict success:^(id JSON) {
         self.taskData = (NSArray*)[(NSDictionary*)JSON objectForKey:@"Data"];
         [self.tableView reloadData];
         [self.refreshControl endRefreshing];
