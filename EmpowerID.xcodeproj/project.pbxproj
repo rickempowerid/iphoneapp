@@ -35,6 +35,8 @@
 		1D88ADB31734D769002F72B8 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D88ADAA1734D769002F72B8 /* UIImageView+AFNetworking.m */; };
 		1D88ADB617388CC8002F72B8 /* Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D88ADB517388CC8002F72B8 /* Helpers.m */; };
 		1D88ADE8173B05F8002F72B8 /* Globals.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D88ADE7173B05F8002F72B8 /* Globals.m */; };
+		1D88ADEE173B70A9002F72B8 /* MainTabControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D88ADED173B70A9002F72B8 /* MainTabControllerViewController.m */; };
+		1D88ADF1173B7CC8002F72B8 /* HomeControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D88ADF0173B7CC8002F72B8 /* HomeControllerViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -87,6 +89,10 @@
 		1D88ADB517388CC8002F72B8 /* Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Helpers.m; sourceTree = "<group>"; };
 		1D88ADE6173B05F8002F72B8 /* Globals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Globals.h; sourceTree = "<group>"; };
 		1D88ADE7173B05F8002F72B8 /* Globals.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Globals.m; sourceTree = "<group>"; };
+		1D88ADEC173B70A8002F72B8 /* MainTabControllerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTabControllerViewController.h; sourceTree = "<group>"; };
+		1D88ADED173B70A9002F72B8 /* MainTabControllerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTabControllerViewController.m; sourceTree = "<group>"; };
+		1D88ADEF173B7CC8002F72B8 /* HomeControllerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeControllerViewController.h; sourceTree = "<group>"; };
+		1D88ADF0173B7CC8002F72B8 /* HomeControllerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeControllerViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +161,10 @@
 				1D88ADB517388CC8002F72B8 /* Helpers.m */,
 				1D88ADE6173B05F8002F72B8 /* Globals.h */,
 				1D88ADE7173B05F8002F72B8 /* Globals.m */,
+				1D88ADEC173B70A8002F72B8 /* MainTabControllerViewController.h */,
+				1D88ADED173B70A9002F72B8 /* MainTabControllerViewController.m */,
+				1D88ADEF173B7CC8002F72B8 /* HomeControllerViewController.h */,
+				1D88ADF0173B7CC8002F72B8 /* HomeControllerViewController.m */,
 			);
 			path = EmpowerID;
 			sourceTree = "<group>";
@@ -284,6 +294,8 @@
 				1D88ADB31734D769002F72B8 /* UIImageView+AFNetworking.m in Sources */,
 				1D88ADB617388CC8002F72B8 /* Helpers.m in Sources */,
 				1D88ADE8173B05F8002F72B8 /* Globals.m in Sources */,
+				1D88ADEE173B70A9002F72B8 /* MainTabControllerViewController.m in Sources */,
+				1D88ADF1173B7CC8002F72B8 /* HomeControllerViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
