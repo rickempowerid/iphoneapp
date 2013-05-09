@@ -76,7 +76,7 @@
                                    initWithTitle:@"Logout"
                                    style:UIBarButtonItemStylePlain
                                    target:[UIApplication sharedApplication].delegate
-                                   action:@selector(logout)];
+                                   action:@selector(showLoginScreen)];
     view.navigationItem.rightBarButtonItem = saveButton;
     
     
