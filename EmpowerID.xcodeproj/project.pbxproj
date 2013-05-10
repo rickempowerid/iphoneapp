@@ -39,6 +39,8 @@
 		1D88ADF1173B7CC8002F72B8 /* HomeControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D88ADF0173B7CC8002F72B8 /* HomeControllerViewController.m */; };
 		1D88ADF3173B9403002F72B8 /* compare_headline_eid.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D88ADF2173B9402002F72B8 /* compare_headline_eid.png */; };
 		1D88ADF7173B95E7002F72B8 /* logo_header.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1D88ADF6173B95E7002F72B8 /* logo_header.jpg */; };
+		1D88ADFA173D3924002F72B8 /* DejalActivityView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D88ADF9173D3923002F72B8 /* DejalActivityView.m */; };
+		1D88ADFD173D5EE1002F72B8 /* RequestsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D88ADFC173D5EE1002F72B8 /* RequestsTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -97,6 +99,10 @@
 		1D88ADF0173B7CC8002F72B8 /* HomeControllerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeControllerViewController.m; sourceTree = "<group>"; };
 		1D88ADF2173B9402002F72B8 /* compare_headline_eid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = compare_headline_eid.png; sourceTree = "<group>"; };
 		1D88ADF6173B95E7002F72B8 /* logo_header.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = logo_header.jpg; sourceTree = "<group>"; };
+		1D88ADF8173D3923002F72B8 /* DejalActivityView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DejalActivityView.h; sourceTree = "<group>"; };
+		1D88ADF9173D3923002F72B8 /* DejalActivityView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DejalActivityView.m; sourceTree = "<group>"; };
+		1D88ADFB173D5EE0002F72B8 /* RequestsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestsTableViewController.h; sourceTree = "<group>"; };
+		1D88ADFC173D5EE1002F72B8 /* RequestsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestsTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +151,8 @@
 		1D88AD5817320257002F72B8 /* EmpowerID */ = {
 			isa = PBXGroup;
 			children = (
+				1D88ADF8173D3923002F72B8 /* DejalActivityView.h */,
+				1D88ADF9173D3923002F72B8 /* DejalActivityView.m */,
 				1D88AD971734D769002F72B8 /* AFNetworking */,
 				1D88AD721732051C002F72B8 /* MainStoryBoard.storyboard */,
 				1D88AD6117320257002F72B8 /* AppDelegate.h */,
@@ -169,6 +177,8 @@
 				1D88ADED173B70A9002F72B8 /* MainTabControllerViewController.m */,
 				1D88ADEF173B7CC8002F72B8 /* HomeControllerViewController.h */,
 				1D88ADF0173B7CC8002F72B8 /* HomeControllerViewController.m */,
+				1D88ADFB173D5EE0002F72B8 /* RequestsTableViewController.h */,
+				1D88ADFC173D5EE1002F72B8 /* RequestsTableViewController.m */,
 			);
 			path = EmpowerID;
 			sourceTree = "<group>";
@@ -304,6 +314,8 @@
 				1D88ADE8173B05F8002F72B8 /* Globals.m in Sources */,
 				1D88ADEE173B70A9002F72B8 /* MainTabControllerViewController.m in Sources */,
 				1D88ADF1173B7CC8002F72B8 /* HomeControllerViewController.m in Sources */,
+				1D88ADFA173D3924002F72B8 /* DejalActivityView.m in Sources */,
+				1D88ADFD173D5EE1002F72B8 /* RequestsTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

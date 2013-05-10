@@ -12,12 +12,18 @@
 #import "AFHTTPClient.h"
 #import "Helpers.h"
 #import "Globals.h"
+#import "DejalActivityView.h"
 
 @interface LoginController ()
 
 @end
 
 @implementation LoginController
+
+- (IBAction)endOnExit:(UITextField *)sender {
+    [sender resignFirstResponder];
+    [self loginClicked:nil];
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -28,8 +34,12 @@
     return self;
 }
 - (IBAction)loginClicked:(id)sender {
-    [self.progressIndicator startAnimating];
+    [DejalBezelActivityView activityViewForView:self.view];
     [self processLogin];
+}
+
+- (IBAction)backgroundClicked:(id)sender {
+    [self.view endEditing:NO];
 }
 
 - (void)viewDidLoad
@@ -112,12 +122,12 @@
                                                                                                 [self transitionToView];
 
                                                                                             }
-                                                                                            [self.progressIndicator stopAnimating];
+                                                                                            [DejalBezelActivityView removeViewAnimated:YES];
                                                                                             
                                                                                         } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
                                                                                             NSLog(@"Request Failed with Error: %@, %@", error, error.userInfo);
                                                                                             NSLog(@"Failure");
-                                                                                            [self.progressIndicator stopAnimating];
+                                                                                            [DejalBezelActivityView removeViewAnimated:YES];
                                                                                             if(response.statusCode == 404)
                                                                                             {
                                                                                                 [Helpers showMessageBox:@"Failure" description:@"Could not connect to the server"];

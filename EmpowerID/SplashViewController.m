@@ -31,7 +31,7 @@
 -(void) viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    
+    [NSThread sleepForTimeInterval:2.0001];
     [self checkToken];
     
 }
@@ -134,6 +134,7 @@
 {
     if([[Globals sharedManager].token length] == 0)
     {
+        
         [self showLoginScreen];
         return;
     }
