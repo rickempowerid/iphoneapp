@@ -28,6 +28,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.taskData = [[NSMutableArray alloc] init];
+    [self setupRefreshControl];
     self.finishedLoading = [[NSArray alloc] init];
     [Helpers setupLogoutButton:self];
     [self loadData: 0];
@@ -40,9 +41,10 @@
 #pragma mark Table view data source
 -(void) setupRefreshControl
 {
-    [self.refreshControl endRefreshing];
+    
     [self.refreshControl addTarget:self action:@selector(refreshControlRequest) forControlEvents:UIControlEventValueChanged];
-    //self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"Updating..."];
+    
+    [self.refreshControl endRefreshing];
 }
 -(void)refreshControlRequest
 {
@@ -101,10 +103,10 @@
     if(currentPage == 0)
         moreResults = YES;
     
-    [self.progressIndicator startAnimating];
+    [self.refreshControl beginRefreshing];
     NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys:[[NSString alloc] initWithFormat:@"%d", currentPage], @"start", @"10", @"pageLength", @"", @"columnsToSearch", @"", @"textToSearch", @"0", @"totalCount", nil];
     
-    [Helpers LoadData:@"BusinessProcessTaskView" methodName:@"GetMyTasks" includedProperties:[[NSArray alloc] initWithObjects:@"Name",@"FriendlyName", nil] parameters:dict success:^(id JSON) {
+    [Helpers LoadData:@"BusinessProcessTaskView" methodName:@"GetMyTasks" includedProperties:[[NSArray alloc] initWithObjects:@"Name",@"FriendlyName",@"BusinessProcessTaskID", nil] parameters:dict success:^(id JSON) {
 
         NSArray* arr1 = (NSArray*)[(NSDictionary*)JSON objectForKey:@"Data"];
         [self.taskData addObjectsFromArray: arr1];
@@ -112,9 +114,7 @@
         moreResults = arr1.count != 0;
         [self.tableView reloadData];
         [self.refreshControl endRefreshing];
-        [self.progressIndicator stopAnimating];
     } failure:^(NSError *error, id JSON) {
-        [self.progressIndicator stopAnimating];
         [self.refreshControl endRefreshing];
         [Helpers showMessageBox:@"error" description:@"an error occurred"];
     }];

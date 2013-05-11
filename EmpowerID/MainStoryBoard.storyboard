@@ -12,10 +12,6 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <activityIndicatorView key="tableFooterView" hidden="YES" opaque="NO" contentMode="scaleToFill" hidesWhenStopped="YES" style="gray" id="y54-WV-itg">
-                            <rect key="frame" x="0.0" y="66" width="320" height="20"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        </activityIndicatorView>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="detailDisclosureButton" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TaskCellIdentifier" textLabel="cAi-UT-aGF" detailTextLabel="ToH-N6-Cuj" style="IBUITableViewCellStyleSubtitle" id="XxF-0f-4Pd">
                                 <rect key="frame" x="0.0" y="22" width="320" height="44"/>
@@ -44,19 +40,16 @@
                         </prototypes>
                     </tableView>
                     <navigationItem key="navigationItem" title="My Tasks" id="aKo-j3-bO7"/>
-                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="qLC-aW-Gap">
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="7Sk-W2-gre">
                         <autoresizingMask key="autoresizingMask"/>
                         <connections>
-                            <action selector="updateRequested:" destination="RW0-BK-Fz7" eventType="valueChanged" id="DX1-to-N11"/>
+                            <action selector="updateRequested:" destination="RW0-BK-Fz7" eventType="valueChanged" id="rX5-OK-pTG"/>
                         </connections>
                     </refreshControl>
-                    <connections>
-                        <outlet property="progressIndicator" destination="y54-WV-itg" id="HUl-DY-OT7"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r1a-0k-EBB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="192" y="181"/>
+            <point key="canvasLocation" x="193" y="181"/>
         </scene>
         <!--Task Details View Controller-->
         <scene sceneID="8vl-wN-8th">
@@ -66,10 +59,6 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <activityIndicatorView key="tableFooterView" opaque="NO" contentMode="scaleToFill" style="gray" id="RHe-AL-PpT">
-                            <rect key="frame" x="0.0" y="66" width="320" height="20"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        </activityIndicatorView>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" id="LaP-Ic-squ">
                                 <rect key="frame" x="0.0" y="22" width="320" height="44"/>
@@ -103,7 +92,7 @@
         <scene sceneID="pEG-xJ-K7J">
             <objects>
                 <navigationController title="My Tasks" definesPresentationContext="YES" id="dZw-uU-f4P" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="My Tasks" id="1gm-ur-sfT" userLabel="Tasks"/>
+                    <tabBarItem key="tabBarItem" title="My Tasks" image="app_globe_24.png" id="1gm-ur-sfT" userLabel="Tasks"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="rNj-fN-EUR">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -286,7 +275,7 @@
         <scene sceneID="EsY-fT-yK6">
             <objects>
                 <navigationController title="EmpowerID" id="4GP-Al-Rsh" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Home" id="exm-Mz-743"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="home_24.png" id="exm-Mz-743"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="V0G-dy-UUC">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -305,7 +294,7 @@
         <scene sceneID="OY6-hO-JJH">
             <objects>
                 <navigationController id="KXn-32-iJM" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="My Requests" id="7dz-m3-aPO"/>
+                    <tabBarItem key="tabBarItem" title="My Requests" image="lock_24.png" id="7dz-m3-aPO"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="0t1-7c-aIy">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -322,7 +311,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="app_globe_24.png" width="24" height="24"/>
         <image name="compare_headline_eid.png" width="97" height="32"/>
+        <image name="home_24.png" width="24" height="24"/>
+        <image name="lock_24.png" width="24" height="24"/>
         <image name="logo_header.jpg" width="960" height="444"/>
     </resources>
     <classes>
@@ -358,9 +350,6 @@
         <class className="TaskTableViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/TaskTableViewController.h"/>
             <relationships>
-                <relationship kind="action" name="editingBegan:"/>
-                <relationship kind="action" name="updateRequested:"/>
-                <relationship kind="outlet" name="progressIndicator" candidateClass="UIActivityIndicatorView"/>
                 <relationship kind="outlet" name="refreshControl" candidateClass="UIRefreshControl"/>
             </relationships>
         </class>

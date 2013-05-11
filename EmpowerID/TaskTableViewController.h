@@ -10,7 +10,6 @@
 
 @interface TaskTableViewController : UITableViewController <UITableViewDataSource>
 
-@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *progressIndicator;
 @property (strong, nonatomic) IBOutlet UIRefreshControl *refreshControl;
 
 @property (strong, nonatomic) NSArray *finishedLoading;

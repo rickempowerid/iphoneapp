@@ -7,12 +7,8 @@
 //
 
 #import "TaskDetailsViewController.h"
+#import "Helpers.h"
 
-
-@implementation BusinessProcessTask
-
-
-@end
 @implementation TaskDetailsViewController
 
 @synthesize data;
@@ -26,11 +22,47 @@
     [super viewWillAppear:animated];
     
     // Scroll the table view to the top before it appears
-    [self.tableView reloadData];
-    [self.tableView setContentOffset:CGPointZero animated:NO];
-    self.title = data.Status;
+    //[self.tableView reloadData];
+    //[self.tableView setContentOffset:CGPointZero animated:NO];
+    self.title = [data objectForKey:@"Name"];
+}
+-(void)viewDidLoad
+{
+    [super viewDidLoad];
+    [self setupRefreshControl];
+    
 }
 
+-(void) setupRefreshControl
+{
+    
+    [self.refreshControl addTarget:self action:@selector(refreshControlRequest) forControlEvents:UIControlEventValueChanged];
+    
+    [self.refreshControl endRefreshing];
+}
+-(void)refreshControlRequest
+{
+    [self loadData];
+}
+
+-(void)loadData
+{
+
+    [self.refreshControl beginRefreshing];
+    NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys:[[NSString alloc]initWithFormat: @"%d", (int)[data objectForKey:@"BusinessProcessTaskID"]], @"businessProcessTaskID", nil];
+    
+    [Helpers LoadData:@"BusinessProcessTaskView" methodName:@"GetMyTasks" includedProperties:[[NSArray alloc] initWithObjects:@"Name",@"FriendlyName",@"Description", @"BusinessProcessStatusName", @"BusinessProcessStatusID", @"BusinessProcessTaskStatusID",@"BusinessProcessTaskID", nil] parameters:dict success:^(id JSON) {
+        
+        NSArray* arr1 = (NSArray*)[(NSDictionary*)JSON objectForKey:@"Data"];
+        self.data = (NSDictionary*)[arr1 objectAtIndex: 0];
+        
+        [self.tableView reloadData];
+        [self.refreshControl endRefreshing];
+    } failure:^(NSError *error, id JSON) {
+        [self.refreshControl endRefreshing];
+        [Helpers showMessageBox:@"error" description:@"an error occurred"];
+    }];
+}
 
 #pragma mark -
 #pragma mark Table view data source
@@ -55,7 +87,12 @@
             break;
         case 2:
             // For the characters section, there are as many rows as there are characters.
-            rows = [data.Decisions count];
+            //rows = [data.Decisions count];
+            if([self showRespondActions:data])
+                rows = 2;
+            else
+                rows = 1;
+            
             break;
         default:
             break;
@@ -63,6 +100,13 @@
     return rows;
 }
 
+-(BOOL) showRespondActions: (NSDictionary*) d
+{
+    int taskStatus = (int)[d valueForKey:@"BusinessProcessTaskStatusID"];
+    int status = (int)[d valueForKey:@"BusinessProcessStatusID"];
+    
+    return taskStatus == 1 && (status==1 || status == 7 || status == 8);
+}
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -84,14 +128,26 @@
     
     switch (indexPath.section) {
         case 0: //Name
-            cellText = data.Name;
+            cellText = [data objectForKey:@"FriendlyName"];
             break;
         case 1: //Description
-            cellText = data.Description;
+            cellText = [data objectForKey:@"Description"];
             break;
         case 2: //Status
             
-            //cellText =
+            if([self showRespondActions:data])
+            {
+                if(indexPath.row == 0)
+                    cellText = @"Approve";
+                else
+                    cellText = @"Reject";
+                
+            }
+            else
+            {
+                cellText = [data objectForKey:@"BusinessProcessStatusName"];
+                
+            }
             break;
         default:
             break;
