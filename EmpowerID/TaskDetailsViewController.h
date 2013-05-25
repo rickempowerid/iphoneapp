@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TaskDetailsViewController : UITableViewController<UITableViewDataSource>
+@interface TaskDetailsViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource>
+
 @property (strong, atomic) NSDictionary* data;
 @end

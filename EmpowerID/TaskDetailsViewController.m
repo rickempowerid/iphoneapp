@@ -30,7 +30,7 @@
 {
     [super viewDidLoad];
     [self setupRefreshControl];
-    
+    [self loadData];
 }
 
 -(void) setupRefreshControl
@@ -47,12 +47,11 @@
 
 -(void)loadData
 {
-
     [self.refreshControl beginRefreshing];
-    NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys:[[NSString alloc]initWithFormat: @"%d", (int)[data objectForKey:@"BusinessProcessTaskID"]], @"businessProcessTaskID", nil];
+    NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys:[[NSString alloc]initWithFormat: @"%@", [data objectForKey:@"BusinessProcessTaskID"]], @"businessProcessTaskID", nil];
     
-    [Helpers LoadData:@"BusinessProcessTaskView" methodName:@"GetMyTasks" includedProperties:[[NSArray alloc] initWithObjects:@"Name",@"FriendlyName",@"Description", @"BusinessProcessStatusName", @"BusinessProcessStatusID", @"BusinessProcessTaskStatusID",@"BusinessProcessTaskID", nil] parameters:dict success:^(id JSON) {
-        
+    [Helpers LoadData:@"BusinessProcessTaskView" methodName:@"GetByBusinessProcessTaskID" includedProperties:[[NSArray alloc] initWithObjects:@"Name",@"FriendlyName",@"Description", @"BusinessProcessStatusName", @"BusinessProcessStatusID", @"BusinessProcessTaskStatusID",@"BusinessProcessTaskID", nil] parameters:dict success:^(id JSON) {
+        NSLog(@"%@", JSON);
         NSArray* arr1 = (NSArray*)[(NSDictionary*)JSON objectForKey:@"Data"];
         self.data = (NSDictionary*)[arr1 objectAtIndex: 0];
         
@@ -109,11 +108,11 @@
 }
 
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"LabelCellIdentifier";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-	static NSString *CellIdentifier = @"CellIdentifier";
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     // Cache a date formatter to create a string representation of the date object.
     static NSDateFormatter *dateFormatter = nil;
@@ -128,10 +127,10 @@
     
     switch (indexPath.section) {
         case 0: //Name
-            cellText = [data objectForKey:@"FriendlyName"];
+            cellText = [data objectForKey:@"Name"];
             break;
         case 1: //Description
-            cellText = [data objectForKey:@"Description"];
+            cellText = [data objectForKey:@"FriendlyName"];
             break;
         case 2: //Status
             
