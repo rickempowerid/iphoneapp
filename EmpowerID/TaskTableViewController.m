@@ -68,11 +68,21 @@
 {
     static NSString *CellIdentifier = @"TaskCellIdentifier";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    NSDictionary *tempDictionary= [self.taskData objectAtIndex:indexPath.row];
+    
+    if([(NSString*)[tempDictionary objectForKey:@"BusinessProcessStatusName"] isEqualToString:@"Open"])
+    {
+        [cell setBackgroundColor:[UIColor colorWithRed:50 green:205 blue:50 alpha:.3]];
+    }
+    else if ([[tempDictionary objectForKey:@"BusinessProcessStatusName"] isEqualToString:@"Rejected"])
+    {
+        [cell setBackgroundColor:[UIColor colorWithRed:.8 green:.8 blue:1 alpha:1]];
+    }
     
       
 
     if (indexPath.row < self.taskData.count - 1) {
-        NSDictionary *tempDictionary= [self.taskData objectAtIndex:indexPath.row];
+        
         
         cell.textLabel.text = [tempDictionary objectForKey:@"Name"];
         
@@ -82,8 +92,6 @@
 
     } else
     {
-        cell.textLabel.text = @"Loading more data...";
-        
         // User has scrolled to the bottom of the list of available data so simulate loading some more if we aren't already
         if (!self.refreshControl.isRefreshing)
         {
@@ -106,7 +114,7 @@
     [self.refreshControl beginRefreshing];
     NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys:[[NSString alloc] initWithFormat:@"%d", currentPage], @"start", @"10", @"pageLength", @"", @"columnsToSearch", @"", @"textToSearch", @"0", @"totalCount", nil];
     
-    [Helpers LoadData:@"BusinessProcessTaskView" methodName:@"GetMyTasks" includedProperties:[[NSArray alloc] initWithObjects:@"Name",@"FriendlyName",@"BusinessProcessTaskID", nil] parameters:dict success:^(id JSON) {
+    [Helpers LoadData:@"BusinessProcessTaskView" methodName:@"GetMyTasks" includedProperties:[[NSArray alloc] initWithObjects:@"Name",@"FriendlyName",@"BusinessProcessStatusName",@"BusinessProcessTaskID",@"BusinessProcessStatusID", nil] parameters:dict success:^(id JSON) {
 
         NSArray* arr1 = (NSArray*)[(NSDictionary*)JSON objectForKey:@"Data"];
         [self.taskData addObjectsFromArray: arr1];
@@ -128,7 +136,7 @@
      When a row is selected, the segue creates the detail view controller as the destination.
      Set the detail view controller's detail item to the item associated with the selected row.
      */
-    if ([[segue identifier] isEqualToString:@"ShowSelectedPlay"]) {
+    if ([[segue identifier] isEqualToString:@"TaskDetailsSeque"]) {
         
         NSIndexPath *selectedRowIndex = [self.tableView indexPathForSelectedRow];
         TaskDetailsViewController *detailViewController = [segue destinationViewController];
