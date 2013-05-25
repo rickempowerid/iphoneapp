@@ -41,6 +41,12 @@
 		1D88ADF7173B95E7002F72B8 /* logo_header.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1D88ADF6173B95E7002F72B8 /* logo_header.jpg */; };
 		1D88ADFA173D3924002F72B8 /* DejalActivityView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D88ADF9173D3923002F72B8 /* DejalActivityView.m */; };
 		1D88ADFD173D5EE1002F72B8 /* RequestsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D88ADFC173D5EE1002F72B8 /* RequestsTableViewController.m */; };
+		1D88ADFF173DCEED002F72B8 /* home_24.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D88ADFE173DCEED002F72B8 /* home_24.png */; };
+		1D88AE01173DCF4C002F72B8 /* app_globe_24.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D88AE00173DCF4C002F72B8 /* app_globe_24.png */; };
+		1D88AE03173DCFA1002F72B8 /* lock_24.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D88AE02173DCFA1002F72B8 /* lock_24.png */; };
+		1D97757317504FA600CD156F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D97757217504FA600CD156F /* QuartzCore.framework */; };
+		1D977576175054D100CD156F /* glassboard.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D977574175054D100CD156F /* glassboard.png */; };
+		1D977577175054D100CD156F /* three_lines@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D977575175054D100CD156F /* three_lines@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -103,6 +109,12 @@
 		1D88ADF9173D3923002F72B8 /* DejalActivityView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DejalActivityView.m; sourceTree = "<group>"; };
 		1D88ADFB173D5EE0002F72B8 /* RequestsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestsTableViewController.h; sourceTree = "<group>"; };
 		1D88ADFC173D5EE1002F72B8 /* RequestsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestsTableViewController.m; sourceTree = "<group>"; };
+		1D88ADFE173DCEED002F72B8 /* home_24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home_24.png; sourceTree = "<group>"; };
+		1D88AE00173DCF4C002F72B8 /* app_globe_24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = app_globe_24.png; sourceTree = "<group>"; };
+		1D88AE02173DCFA1002F72B8 /* lock_24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lock_24.png; sourceTree = "<group>"; };
+		1D97757217504FA600CD156F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		1D977574175054D100CD156F /* glassboard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = glassboard.png; sourceTree = "<group>"; };
+		1D977575175054D100CD156F /* three_lines@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "three_lines@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +122,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1D97757317504FA600CD156F /* QuartzCore.framework in Frameworks */,
 				1D88AD5117320257002F72B8 /* UIKit.framework in Frameworks */,
 				1D88AD5317320257002F72B8 /* Foundation.framework in Frameworks */,
 				1D88AD5517320257002F72B8 /* CoreGraphics.framework in Frameworks */,
@@ -140,6 +153,7 @@
 		1D88AD4F17320257002F72B8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1D97757217504FA600CD156F /* QuartzCore.framework */,
 				1D88AD5017320257002F72B8 /* UIKit.framework */,
 				1D88AD5217320257002F72B8 /* Foundation.framework */,
 				1D88AD5417320257002F72B8 /* CoreGraphics.framework */,
@@ -151,6 +165,7 @@
 		1D88AD5817320257002F72B8 /* EmpowerID */ = {
 			isa = PBXGroup;
 			children = (
+				1D97754E17504D4800CD156F /* SlideOutNavigationSample */,
 				1D88ADF8173D3923002F72B8 /* DejalActivityView.h */,
 				1D88ADF9173D3923002F72B8 /* DejalActivityView.m */,
 				1D88AD971734D769002F72B8 /* AFNetworking */,
@@ -186,6 +201,11 @@
 		1D88AD5917320257002F72B8 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				1D977574175054D100CD156F /* glassboard.png */,
+				1D977575175054D100CD156F /* three_lines@2x.png */,
+				1D88AE02173DCFA1002F72B8 /* lock_24.png */,
+				1D88AE00173DCF4C002F72B8 /* app_globe_24.png */,
+				1D88ADFE173DCEED002F72B8 /* home_24.png */,
 				1D88ADF6173B95E7002F72B8 /* logo_header.jpg */,
 				1D88ADF2173B9402002F72B8 /* compare_headline_eid.png */,
 				1D88AD5A17320257002F72B8 /* EmpowerID-Info.plist */,
@@ -223,6 +243,13 @@
 				1D88ADAA1734D769002F72B8 /* UIImageView+AFNetworking.m */,
 			);
 			path = AFNetworking;
+			sourceTree = "<group>";
+		};
+		1D97754E17504D4800CD156F /* SlideOutNavigationSample */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SlideOutNavigationSample;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -283,6 +310,11 @@
 				1D88AD731732051C002F72B8 /* MainStoryBoard.storyboard in Resources */,
 				1D88ADF3173B9403002F72B8 /* compare_headline_eid.png in Resources */,
 				1D88ADF7173B95E7002F72B8 /* logo_header.jpg in Resources */,
+				1D88ADFF173DCEED002F72B8 /* home_24.png in Resources */,
+				1D88AE01173DCF4C002F72B8 /* app_globe_24.png in Resources */,
+				1D88AE03173DCFA1002F72B8 /* lock_24.png in Resources */,
+				1D977576175054D100CD156F /* glassboard.png in Resources */,
+				1D977577175054D100CD156F /* three_lines@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -395,7 +427,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "EmpowerID/EmpowerID-Prefix.pch";
 				INFOPLIST_FILE = "EmpowerID/EmpowerID-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -406,7 +440,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "EmpowerID/EmpowerID-Prefix.pch";
 				INFOPLIST_FILE = "EmpowerID/EmpowerID-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -430,6 +466,7 @@
 				1D88AD7117320257002F72B8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
