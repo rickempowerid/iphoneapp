@@ -71,7 +71,7 @@
 -(void)processLogin
 {
     
-    NSURL *url = [NSURL URLWithString:@"https://sso.empowerid.com/EmpowerIDOAuth/oauth2/token"];
+    NSURL *url = [NSURL URLWithString:[Helpers getQueryString:@"/EmpowerIDOAuth/oauth2/token"]];
 
     
     AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:url];

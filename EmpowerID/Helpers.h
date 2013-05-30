@@ -16,4 +16,5 @@ extern NSString* token;
         failure:(void (^)(NSError *error, id JSON))failure;
 +(void)showMessageBox: (NSString *)message description:(NSString*)description;
 +(void)logout: (UIViewController*)view;
++(NSString*)getQueryString: (NSString*)path;
 @end

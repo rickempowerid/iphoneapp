@@ -25,7 +25,7 @@
         failure:(void (^)(NSError *error, id JSON))failure
 {
     
-    NSURL *url = [NSURL URLWithString:@"https://sso.empowerid.com/EmpowerIDv5/api/v1/query"];
+    NSURL *url = [NSURL URLWithString:[Helpers getQueryString: @"/EmpowerIDv5/api/v1/query"]];
     NSDictionary* data = [[NSDictionary alloc] initWithObjectsAndKeys:
                             methodName, @"MethodName" , typeName, @"TypeName", includedProperties, @"IncludedProperties", [Helpers buildParameters:parameters], @"Parameters" , nil];
     
@@ -112,6 +112,12 @@
     }
     return list;
     
+}
++ (NSString *)getQueryString:(NSString *)path
+{
+    NSString* s = [[NSString alloc] initWithFormat:@"https://%@%@", [Globals sharedManager].host, path];
+    
+    return s;
 }
 +(void)showMessageBox: (NSString *)message description:(NSString*)description
 {
