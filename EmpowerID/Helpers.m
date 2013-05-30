@@ -72,11 +72,22 @@
 }
 +(void) setupLogoutButton: (UIViewController*) view
 {
+    id block = [^
+    {
+    
+    } copy];
+    
+    
     UIBarButtonItem *saveButton = [[UIBarButtonItem alloc]
                                    initWithTitle:@"Logout"
                                    style:UIBarButtonItemStylePlain
                                    target:[UIApplication sharedApplication].delegate
                                    action:@selector(showLoginScreen)];
+    UIBarButtonItem *menuButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"three_lines@2x.png"]
+                                   style:UIBarButtonItemStyleBordered
+                                   target:block
+                                   action: @selector(invoke)];
+    view.navigationItem.leftBarButtonItem = menuButton;
     view.navigationItem.rightBarButtonItem = saveButton;
     
     

@@ -13,7 +13,7 @@
 #import "Helpers.h"
 #import "Globals.h"
 #import "DejalActivityView.h"
-
+#import "SettingsViewController.h"
 @interface LoginController ()
 
 @end
@@ -24,7 +24,14 @@
     [sender resignFirstResponder];
     [self loginClicked:nil];
 }
-
+- (IBAction)settingsClick:(id)sender
+{
+    SettingsViewController *con = [[SettingsViewController alloc] initWithNibName:@"SettingsViewController" bundle:nil];
+    [self presentViewController:con animated:YES completion:nil];
+    
+    
+    
+}
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];

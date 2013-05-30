@@ -40,6 +40,19 @@
     return tok;
 }
 
+- (void)setHost:(NSString *)s {
+    NSLog(@"writing host:%@", s);
+    [[NSUserDefaults standardUserDefaults] setObject:s forKey:@"HOST"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (NSString *)host {
+    
+    NSString* tok = [[NSUserDefaults standardUserDefaults] valueForKey:@"HOST"];
+    NSLog(@"retrieved host:%@", tok);
+    return tok;
+}
+
 #pragma mark Singleton Methods
 
 + (id)sharedManager {
