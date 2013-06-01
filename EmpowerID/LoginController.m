@@ -14,6 +14,7 @@
 #import "Globals.h"
 #import "DejalActivityView.h"
 #import "SettingsViewController.h"
+#import "SSOLoginViewController.h"
 @interface LoginController ()
 
 @end
@@ -30,6 +31,12 @@
     [self presentViewController:con animated:YES completion:nil];
     
     
+    
+}
+
+- (IBAction)loginOtherClicked:(id)sender {
+    SSOLoginViewController *con = [[SSOLoginViewController alloc] initWithNibName:@"SSOLoginViewController" bundle:nil];
+    [self presentViewController:con animated:YES completion:nil];
     
 }
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil

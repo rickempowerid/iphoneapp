@@ -13,5 +13,6 @@
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *progressIndicator;
 @property (weak, nonatomic) IBOutlet UITextField *textPassword;
 - (IBAction)settingsClick:(id)sender;
+- (IBAction)loginOtherClicked:(id)sender;
 
 @end
