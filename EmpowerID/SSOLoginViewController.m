@@ -35,6 +35,8 @@
     self.ssoData = [[NSMutableArray alloc] init];
     //[self.collectionView layout
     [self loadData];
+    //[self.view addSubview:self.webView];
+    //[self.webView setBounds:self.tableView.bounds];
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -94,11 +96,12 @@
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryBoard" bundle: nil];
     SSOLoginWebViewController *lvc = [storyboard instantiateViewControllerWithIdentifier:@"SSOLoginWebViewController"];
     
-    lvc.webView.delegate = self;
+    lvc.authenticateUrl = authenticateUrl;
     lvc.webView.scalesPageToFit = YES;
     //self.domain = [[NSURL URLWithString:authenticateUrl] host];
-    [lvc.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"www.google.com"]]];
+    //[self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.google.com"]]];
     
+    //self.webView.hidden = NO;
     [self presentViewController:lvc animated:YES completion: nil];
 
 }

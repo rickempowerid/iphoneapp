@@ -10,5 +10,5 @@
 
 @interface SSOLoginWebViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
-
+@property NSString *authenticateUrl;
 @end
