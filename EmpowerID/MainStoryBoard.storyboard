@@ -279,7 +279,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="loginOtherClicked:" destination="vfy-Vy-AoQ" eventType="touchUpInside" id="6RZ-pB-n4O"/>
+                                    <segue destination="bRX-1n-Qdj" kind="modal" id="zuL-G4-WED"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -318,6 +318,86 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jjm-No-fIx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1118" y="846"/>
+        </scene>
+        <!--Login Web View Controller-->
+        <scene sceneID="aYd-BU-hNb">
+            <objects>
+                <viewController storyboardIdentifier="SSOLoginWebViewController" id="uSt-Ji-Yuv" customClass="SSOLoginWebViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="yLW-BP-q1Y">
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wd9-WJ-j7m">
+                                <color key="backgroundColor" red="1" green="0.2359362626210838" blue="0.39576777262653295" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <outlet property="delegate" destination="yLW-BP-q1Y" id="Vd7-uW-Kda"/>
+                                </connections>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="wd9-WJ-j7m" firstAttribute="leading" secondItem="yLW-BP-q1Y" secondAttribute="leading" type="default" id="QIa-Ng-QsZ"/>
+                            <constraint firstItem="wd9-WJ-j7m" firstAttribute="top" secondItem="yLW-BP-q1Y" secondAttribute="top" type="user" id="RYa-K5-gy4"/>
+                            <constraint firstItem="wd9-WJ-j7m" firstAttribute="trailing" secondItem="yLW-BP-q1Y" secondAttribute="trailing" type="default" id="Y6X-d4-cuw"/>
+                            <constraint firstItem="wd9-WJ-j7m" firstAttribute="bottom" secondItem="yLW-BP-q1Y" secondAttribute="bottom" type="default" id="mIn-yd-8qR"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lHc-RS-4uz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1551" y="163"/>
+        </scene>
+        <!--Login View Controller-->
+        <scene sceneID="fjc-xp-Yom">
+            <objects>
+                <tableViewController storyboardIdentifier="SSOLoginViewController" id="bRX-1n-Qdj" customClass="SSOLoginViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="72" sectionHeaderHeight="22" sectionFooterHeight="22" id="XNC-Dy-P2Z">
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SSOCell" rowHeight="72" id="amT-ox-wAj">
+                                <rect key="frame" x="0.0" y="22" width="320" height="72"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="71"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" tag="100" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="zEH-pq-unW">
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="40" id="4aB-ph-qGy"/>
+                                                <constraint firstAttribute="width" constant="267" id="NaJ-JG-FMs"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="101" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eq5-6m-b2s">
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="21" id="15p-DF-jjE"/>
+                                                <constraint firstAttribute="width" constant="244" id="3ot-TM-zfD"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <constraints>
+                                    <constraint firstItem="zEH-pq-unW" firstAttribute="leading" secondItem="amT-ox-wAj" secondAttribute="leading" constant="9" id="9ob-0I-zdv"/>
+                                    <constraint firstItem="Eq5-6m-b2s" firstAttribute="leading" secondItem="zEH-pq-unW" secondAttribute="leading" type="default" id="Cac-eZ-O0I"/>
+                                    <constraint firstAttribute="bottom" secondItem="Eq5-6m-b2s" secondAttribute="bottom" constant="7" id="eZ7-bs-HkU"/>
+                                    <constraint firstItem="zEH-pq-unW" firstAttribute="top" secondItem="amT-ox-wAj" secondAttribute="top" constant="5" id="rKs-qZ-geb"/>
+                                </constraints>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="bRX-1n-Qdj" id="LTD-ew-5nx"/>
+                            <outlet property="delegate" destination="bRX-1n-Qdj" id="oZS-iz-oAs"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oTK-fT-J5q" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1539" y="851"/>
         </scene>
         <!--Navigation Controller - EmpowerID-->
         <scene sceneID="EsY-fT-yK6">
@@ -365,6 +445,62 @@
         <image name="lock_24.png" width="24" height="24"/>
         <image name="logo_header.jpg" width="960" height="444"/>
     </resources>
+    <classes>
+        <class className="HomeControllerViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/HomeControllerViewController.h"/>
+        </class>
+        <class className="LoginController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/LoginController.h"/>
+            <relationships>
+                <relationship kind="action" name="backgroundClicked:"/>
+                <relationship kind="action" name="endOnExit:" candidateClass="UITextField"/>
+                <relationship kind="action" name="loginClicked:"/>
+                <relationship kind="action" name="loginOtherClicked:"/>
+                <relationship kind="action" name="settingsClick:"/>
+                <relationship kind="outlet" name="progressIndicator" candidateClass="UIActivityIndicatorView"/>
+                <relationship kind="outlet" name="textPassword" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="textUsername" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="MainTabControllerViewController" superclassName="UITabBarController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MainTabControllerViewController.h"/>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="RequestsTableViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RequestsTableViewController.h"/>
+        </class>
+        <class className="SSOLoginViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SSOLoginViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
+            </relationships>
+        </class>
+        <class className="SSOLoginWebViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SSOLoginWebViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
+            </relationships>
+        </class>
+        <class className="SplashViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SplashViewController.h"/>
+        </class>
+        <class className="TaskDetailsViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TaskDetailsViewController.h"/>
+        </class>
+        <class className="TaskTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TaskTableViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="editingBegan:"/>
+                <relationship kind="action" name="updateRequested:"/>
+                <relationship kind="outlet" name="refreshControl" candidateClass="UIRefreshControl"/>
+            </relationships>
+        </class>
+        <class className="UIRefreshControl" superclassName="UIControl">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UIRefreshControl.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

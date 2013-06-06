@@ -10,12 +10,14 @@
 #import "UIImageView+WebCache.h"
 #import "Helpers.h"
 #import "Globals.h"
+#import "SSOLoginWebViewController.h"
+
 @interface SSOLoginViewController ()
 
 @end
 
 @implementation SSOLoginViewController
-@synthesize data;
+@synthesize ssoData;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -29,8 +31,76 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.ssoData = [[NSMutableArray alloc] init];
+    //[self.collectionView layout
     [self loadData];
     // Do any additional setup after loading the view from its nib.
+}
+
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
+{
+    return YES;
+}
+
+- (void)webViewDidStartLoad:(UIWebView *)webView
+{
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+    //[self updateButtons];
+}
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
+{
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+    //[self updateButtons];
+}
+
+- (NSString*)getTokenFromCookie {
+    NSHTTPCookie *cookie;
+    NSHTTPCookieStorage *cookieJar = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+    for (cookie in [cookieJar cookies]) {
+        if ([[cookie domain] isEqualToString:[Globals sharedManager].host]) {
+            if ([[cookie name] isEqualToString:@"oauth_token"]) {
+                return [cookie value];
+            }
+        }
+    }
+    return nil;
+}
+
+
+
+- (void)webViewDidFinishLoad:(UIWebView *)theWebView
+{
+    NSString* token = [self getTokenFromCookie];
+    if (token != nil) {
+        //[self.delegate gotToken:token];
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+}
+
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSString * path = [[self.ssoData objectAtIndex:indexPath.row] valueForKey:@"Url"];
+    
+    [self loadAuthenticateUrl: path];
+    
+    
+}
+
+
+- (void)loadAuthenticateUrl:(NSString *)authenticateUrl {
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryBoard" bundle: nil];
+    SSOLoginWebViewController *lvc = [storyboard instantiateViewControllerWithIdentifier:@"SSOLoginWebViewController"];
+    
+    lvc.webView.delegate = self;
+    lvc.webView.scalesPageToFit = YES;
+    //self.domain = [[NSURL URLWithString:authenticateUrl] host];
+    [lvc.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"www.google.com"]]];
+    
+    [self presentViewController:lvc animated:YES completion: nil];
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -39,28 +109,39 @@
     // Dispose of any resources that can be recreated.
 }
 
--(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    return 1;
-}
+     - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+         // Only one section.
+         return 1;
+     }
+     
+     
+     - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+         // Only one section, so return the number of items in the list.
+         return self.ssoData.count;
+     }
 
-- (NSInteger)collectionView:(UICollectionView *)view numberOfItemsInSection:(NSInteger)section {
-    return 4;
-}
 
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSDictionary *tile = [self.ssoData objectAtIndex:indexPath.row];
     
- static NSString *identifier = @"Cell";
-    NSString *path = [Helpers getQueryString:[(NSDictionary*)[data objectAtIndex:indexPath.row] valueForKey:@"SSOImageUrl"]];
-UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
-
-UIImageView *imageView = (UIImageView *)[cell viewWithTag:100];
-//recipeImageView.image = [imageArray objectAtIndex:indexPath.section * noOfSection + indexPath];
-
-    [imageView setImageWithURL:[NSURL URLWithString:path] placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
-    
-return cell;
-}
+        static NSString *identifier = @"SSOCell";
+        NSString *path = [Helpers getQueryString:[tile valueForKey:@"Icon"]];
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
+        
+        UIImageView *imageView = (UIImageView *)[cell viewWithTag:100];
+        //recipeImageView.image = [imageArray objectAtIndex:indexPath.section * noOfSection + indexPath];
+        
+        [imageView setImageWithURL:[NSURL URLWithString:path] placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
+        
+        UILabel *labelView = (UILabel *)[cell viewWithTag:101];
+        
+        labelView.text = [tile valueForKey:@"Title"];
+        
+        
+        return cell;
+        
+    }
 
 -(void)loadData
 {
@@ -69,17 +150,17 @@ return cell;
     NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys:host, @"domain", @"EmpowerID", @"serviceProvider", nil];
     
     
-    [Helpers LoadAction:@"/EmpowerIDWebIdPForms/GetTilesByDomain" parameters:dict success:^(id JSON) {
+    [Helpers LoadAction:@"/EmpowerIDWebIdPForms/GetSSOTiles" parameters:dict success:^(id JSON) {
         NSLog(@"%@", JSON);
-        NSArray* arr1 = (NSArray*)[(NSDictionary*)JSON objectForKey:@"Data"];
-        self.data = arr1;
+        NSArray* arr1 = [(NSDictionary*)JSON valueForKey:@"Tiles"];
+        [self.ssoData addObjectsFromArray: arr1];
         
-        [self.collectionView reloadData];
+        [self.tableView reloadData];
         //[self.refreshControl endRefreshing];
     } failure:^(NSError *error, id JSON) {
         //[self.refreshControl endRefreshing];
         [Helpers showMessageBox:@"error" description:@"an error occurred"];
-    }];
+    } addAuthHeader:NO];
 }
 
 

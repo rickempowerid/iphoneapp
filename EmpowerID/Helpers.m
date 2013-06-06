@@ -72,7 +72,7 @@
 }
 
 +(void)LoadAction:(NSString*)path parameters:(NSDictionary*)parameters success:(void (^)(id JSON))success
-        failure:(void (^)(NSError *error, id JSON))failure
+          failure:(void (^)(NSError *error, id JSON))failure addAuthHeader:(BOOL)addAuthHeader
 {
     
     NSURL *url = [NSURL URLWithString:[Helpers getQueryString: path]];
@@ -88,18 +88,21 @@ NSError *error;
         jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
     }
     
-    NSLog(@"writing HEADER %@", [Helpers getAuthenticationHeader]);
-    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:url];
-    [httpClient registerHTTPOperationClass:[AFJSONRequestOperation class]];
-    [httpClient setDefaultHeader:@"Accept" value:@"application/json"];
     
     
     NSData *requestData = [NSData dataWithBytes:[jsonString UTF8String] length:[jsonString length]];
     
     
-    NSMutableURLRequest *request = [httpClient requestWithMethod:@"POST" path:@"" parameters: nil];
-    [request setValue:[Helpers getAuthenticationHeader] forHTTPHeaderField:@"Authorization"];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    if(addAuthHeader)
+    {
+        NSLog(@"writing HEADER %@", [Helpers getAuthenticationHeader]);
+        [request setValue:[Helpers getAuthenticationHeader] forHTTPHeaderField:@"Authorization"];
+       
+    }
+    [request setHTTPMethod:@"POST"];
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    //[request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [request setHTTPBody: requestData];
     NSLog(@"%@", jsonString);
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request

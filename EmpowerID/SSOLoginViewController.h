@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SSOLoginViewController : UICollectionViewController
-@property NSArray *data;
+@interface SSOLoginViewController : UITableViewController <UITableViewDataSource, UIWebViewDelegate>
+@property (weak, nonatomic) IBOutlet UIWebView *webView;
+@property NSMutableArray *ssoData;
+
 @end
