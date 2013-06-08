@@ -10,5 +10,6 @@
 
 @interface SSOLoginWebViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
+- (IBAction)closeClicked:(id)sender;
 @property NSString *authenticateUrl;
 @end

@@ -32,6 +32,10 @@
 {
     [super viewDidLoad];
     
+    UIBarButtonItem *but = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:self action:@selector(backClicked)];
+    
+    self.navigationItem.leftBarButtonItem = but;
+    
     self.ssoData = [[NSMutableArray alloc] init];
     //[self.collectionView layout
     [self loadData];
@@ -39,7 +43,11 @@
     //[self.webView setBounds:self.tableView.bounds];
     // Do any additional setup after loading the view from its nib.
 }
-
+-(void)backClicked
+{
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 {
     return YES;

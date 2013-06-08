@@ -14,22 +14,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [button addTarget:self
-               action:@selector(closeAd:)
-     forControlEvents:UIControlEventTouchUpInside];
-    [button setTitle:@"Close" forState:UIControlStateNormal];
-    button.frame = CGRectMake(80.0, 210.0, 160.0, 40.0);
     
-    [self.webView addSubview:button];
     
     //[self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.google.com"]]];
 }
--(void)closeAd:(id)sender
-{
-    
-    
-}
+
 
 -(void)viewDidAppear:(BOOL)animated
 {
@@ -53,4 +42,7 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)closeClicked:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 @end
