@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SSOLoginWebViewController : UIViewController
+@interface SSOLoginWebViewController : UIViewController<UIWebViewDelegate>
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 - (IBAction)closeClicked:(id)sender;
 @property NSString *authenticateUrl;
