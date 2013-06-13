@@ -62,6 +62,12 @@
 		1D88FD311759BF62006A1D88 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D88FD301759BF62006A1D88 /* MapKit.framework */; };
 		1D88FD331759BFA0006A1D88 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D88FD321759BFA0006A1D88 /* ImageIO.framework */; };
 		1D88FD3617603724006A1D88 /* SSOLoginWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D88FD3517603724006A1D88 /* SSOLoginWebViewController.m */; };
+		1D88FD3D1766E173006A1D88 /* UINavigationItem+JTRevealSidebarV2.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D88FD3A1766E173006A1D88 /* UINavigationItem+JTRevealSidebarV2.m */; };
+		1D88FD3E1766E173006A1D88 /* UIViewController+JTRevealSidebarV2.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D88FD3C1766E173006A1D88 /* UIViewController+JTRevealSidebarV2.m */; };
+		1D88FD451766E1AE006A1D88 /* NewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D88FD401766E1AD006A1D88 /* NewViewController.m */; };
+		1D88FD461766E1AE006A1D88 /* SidebarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D88FD421766E1AD006A1D88 /* SidebarViewController.m */; };
+		1D88FD471766E1AE006A1D88 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D88FD441766E1AE006A1D88 /* ViewController.m */; };
+		1D88FD4A1769381A006A1D88 /* ContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D88FD491769381A006A1D88 /* ContainerViewController.m */; };
 		1D97757317504FA600CD156F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D97757217504FA600CD156F /* QuartzCore.framework */; };
 		1D977576175054D100CD156F /* glassboard.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D977574175054D100CD156F /* glassboard.png */; };
 		1D977577175054D100CD156F /* three_lines@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D977575175054D100CD156F /* three_lines@2x.png */; };
@@ -164,6 +170,19 @@
 		1D88FD321759BFA0006A1D88 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		1D88FD3417603724006A1D88 /* SSOLoginWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSOLoginWebViewController.h; sourceTree = "<group>"; };
 		1D88FD3517603724006A1D88 /* SSOLoginWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSOLoginWebViewController.m; sourceTree = "<group>"; };
+		1D88FD381766E173006A1D88 /* JTRevealSidebarV2Delegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JTRevealSidebarV2Delegate.h; sourceTree = "<group>"; };
+		1D88FD391766E173006A1D88 /* UINavigationItem+JTRevealSidebarV2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationItem+JTRevealSidebarV2.h"; sourceTree = "<group>"; };
+		1D88FD3A1766E173006A1D88 /* UINavigationItem+JTRevealSidebarV2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationItem+JTRevealSidebarV2.m"; sourceTree = "<group>"; };
+		1D88FD3B1766E173006A1D88 /* UIViewController+JTRevealSidebarV2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+JTRevealSidebarV2.h"; sourceTree = "<group>"; };
+		1D88FD3C1766E173006A1D88 /* UIViewController+JTRevealSidebarV2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+JTRevealSidebarV2.m"; sourceTree = "<group>"; };
+		1D88FD3F1766E1AC006A1D88 /* NewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NewViewController.h; path = ../NewViewController.h; sourceTree = "<group>"; };
+		1D88FD401766E1AD006A1D88 /* NewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NewViewController.m; path = ../NewViewController.m; sourceTree = "<group>"; };
+		1D88FD411766E1AD006A1D88 /* SidebarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SidebarViewController.h; path = ../SidebarViewController.h; sourceTree = "<group>"; };
+		1D88FD421766E1AD006A1D88 /* SidebarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SidebarViewController.m; path = ../SidebarViewController.m; sourceTree = "<group>"; };
+		1D88FD431766E1AD006A1D88 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ViewController.h; path = ../ViewController.h; sourceTree = "<group>"; };
+		1D88FD441766E1AE006A1D88 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ViewController.m; path = ../ViewController.m; sourceTree = "<group>"; };
+		1D88FD4817693819006A1D88 /* ContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContainerViewController.h; sourceTree = "<group>"; };
+		1D88FD491769381A006A1D88 /* ContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContainerViewController.m; sourceTree = "<group>"; };
 		1D97757217504FA600CD156F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		1D977574175054D100CD156F /* glassboard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = glassboard.png; sourceTree = "<group>"; };
 		1D977575175054D100CD156F /* three_lines@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "three_lines@2x.png"; sourceTree = "<group>"; };
@@ -221,6 +240,7 @@
 		1D88AD5817320257002F72B8 /* EmpowerID */ = {
 			isa = PBXGroup;
 			children = (
+				1D88FD371766E173006A1D88 /* JTRevealSidebarV2 */,
 				1D88FCFA17599F48006A1D88 /* SDWebImage */,
 				1D97754E17504D4800CD156F /* SlideOutNavigationSample */,
 				1D88ADF8173D3923002F72B8 /* DejalActivityView.h */,
@@ -258,6 +278,8 @@
 				1D88FCF617571CAA006A1D88 /* SSOLoginViewController.m */,
 				1D88FD3417603724006A1D88 /* SSOLoginWebViewController.h */,
 				1D88FD3517603724006A1D88 /* SSOLoginWebViewController.m */,
+				1D88FD4817693819006A1D88 /* ContainerViewController.h */,
+				1D88FD491769381A006A1D88 /* ContainerViewController.m */,
 			);
 			path = EmpowerID;
 			sourceTree = "<group>";
@@ -339,6 +361,24 @@
 				1D88FD1317599F48006A1D88 /* UIImageView+WebCache.m */,
 			);
 			path = SDWebImage;
+			sourceTree = "<group>";
+		};
+		1D88FD371766E173006A1D88 /* JTRevealSidebarV2 */ = {
+			isa = PBXGroup;
+			children = (
+				1D88FD3F1766E1AC006A1D88 /* NewViewController.h */,
+				1D88FD401766E1AD006A1D88 /* NewViewController.m */,
+				1D88FD411766E1AD006A1D88 /* SidebarViewController.h */,
+				1D88FD421766E1AD006A1D88 /* SidebarViewController.m */,
+				1D88FD431766E1AD006A1D88 /* ViewController.h */,
+				1D88FD441766E1AE006A1D88 /* ViewController.m */,
+				1D88FD381766E173006A1D88 /* JTRevealSidebarV2Delegate.h */,
+				1D88FD391766E173006A1D88 /* UINavigationItem+JTRevealSidebarV2.h */,
+				1D88FD3A1766E173006A1D88 /* UINavigationItem+JTRevealSidebarV2.m */,
+				1D88FD3B1766E173006A1D88 /* UIViewController+JTRevealSidebarV2.h */,
+				1D88FD3C1766E173006A1D88 /* UIViewController+JTRevealSidebarV2.m */,
+			);
+			path = JTRevealSidebarV2;
 			sourceTree = "<group>";
 		};
 		1D97754E17504D4800CD156F /* SlideOutNavigationSample */ = {
@@ -460,6 +500,12 @@
 				1D88FD1F17599F48006A1D88 /* UIImageView+WebCache.m in Sources */,
 				1D88FD2F1759BF49006A1D88 /* MKAnnotationView+WebCache.m in Sources */,
 				1D88FD3617603724006A1D88 /* SSOLoginWebViewController.m in Sources */,
+				1D88FD3D1766E173006A1D88 /* UINavigationItem+JTRevealSidebarV2.m in Sources */,
+				1D88FD3E1766E173006A1D88 /* UIViewController+JTRevealSidebarV2.m in Sources */,
+				1D88FD451766E1AE006A1D88 /* NewViewController.m in Sources */,
+				1D88FD461766E1AE006A1D88 /* SidebarViewController.m in Sources */,
+				1D88FD471766E1AE006A1D88 /* ViewController.m in Sources */,
+				1D88FD4A1769381A006A1D88 /* ContainerViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
