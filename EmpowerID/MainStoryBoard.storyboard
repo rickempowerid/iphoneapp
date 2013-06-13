@@ -4,12 +4,12 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
     <scenes>
-        <!--Task Table View Controller - My Tasks-->
+        <!--Task Table View Controller - Tasks-->
         <scene sceneID="Nwb-IC-JAK">
             <objects>
-                <tableViewController storyboardIdentifier="TaskTableViewController" wantsFullScreenLayout="YES" id="RW0-BK-Fz7" customClass="TaskTableViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="TaskTableViewController" wantsFullScreenLayout="YES" hidesBottomBarWhenPushed="YES" id="RW0-BK-Fz7" customClass="TaskTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="2vh-I8-qc8">
-                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="499"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -39,7 +39,8 @@
                             </tableViewCell>
                         </prototypes>
                     </tableView>
-                    <navigationItem key="navigationItem" title="My Tasks" id="aKo-j3-bO7"/>
+                    <tabBarItem key="tabBarItem" title="Tasks" id="Iog-oi-bmh"/>
+                    <navigationItem key="navigationItem" id="aKo-j3-bO7"/>
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="7Sk-W2-gre">
                         <autoresizingMask key="autoresizingMask"/>
                         <connections>
@@ -49,14 +50,14 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r1a-0k-EBB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="193" y="181"/>
+            <point key="canvasLocation" x="155" y="149"/>
         </scene>
         <!--Task Details View Controller-->
         <scene sceneID="PPQ-lt-VrT">
             <objects>
                 <tableViewController id="nQn-sS-R5r" customClass="TaskDetailsViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="ge4-TZ-TCa">
-                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="499"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -89,60 +90,39 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DqC-iE-gn2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="599" y="186"/>
+            <point key="canvasLocation" x="657" y="154"/>
         </scene>
-        <!--Home Controller View Controller-->
+        <!--Home Controller View Controller - Home-->
         <scene sceneID="ayE-HF-LIr">
             <objects>
                 <viewController id="rE6-sq-3jV" customClass="HomeControllerViewController" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Home" id="Qse-6H-gQJ"/>
                     <navigationItem key="navigationItem" id="G6v-oQ-dlZ"/>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Ia-PC-CYv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="124" y="-490"/>
-        </scene>
-        <!--Navigation Controller - My Tasks-->
-        <scene sceneID="pEG-xJ-K7J">
-            <objects>
-                <navigationController title="My Tasks" definesPresentationContext="YES" id="dZw-uU-f4P" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="My Tasks" image="app_globe_24.png" id="1gm-ur-sfT" userLabel="Tasks"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="rNj-fN-EUR">
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="F6r-i2-BZL">
-                        <rect key="frame" x="0.0" y="524" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </toolbar>
-                    <connections>
-                        <segue destination="RW0-BK-Fz7" kind="relationship" relationship="rootViewController" id="FmV-Jb-DJs"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Amx-g9-T58" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-190" y="181"/>
+            <point key="canvasLocation" x="155" y="-526"/>
         </scene>
         <!--Requests Table View Controller - My Requests-->
         <scene sceneID="zhP-LW-agL">
             <objects>
                 <viewController title="My Requests" id="gHb-Uv-5gD" customClass="RequestsTableViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0q7-yb-Ce4">
-                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="499"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Requests" id="e3d-qY-NIe"/>
                     <navigationItem key="navigationItem" id="3H7-mX-Ce7"/>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u4k-Sr-JKr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="205" y="838"/>
+            <point key="canvasLocation" x="155" y="830"/>
         </scene>
         <!--Main Tab Controller View Controller-->
         <scene sceneID="GuJ-TR-K8g">
             <objects>
                 <tabBarController storyboardIdentifier="MainToolbar" definesPresentationContext="YES" id="FvN-xp-Ckh" customClass="MainTabControllerViewController" sceneMemberID="viewController">
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="IUL-Dq-zR4">
                         <rect key="frame" x="129" y="330" width="163" height="49"/>
@@ -150,14 +130,14 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="KXn-32-iJM" kind="relationship" relationship="viewControllers" id="muL-Ef-Iod"/>
-                        <segue destination="dZw-uU-f4P" kind="relationship" relationship="viewControllers" id="sVK-kY-Doe"/>
-                        <segue destination="4GP-Al-Rsh" kind="relationship" relationship="viewControllers" id="Tj9-hu-r4a"/>
+                        <segue destination="gHb-Uv-5gD" kind="relationship" relationship="viewControllers" id="b0e-bZ-r0d"/>
+                        <segue destination="RW0-BK-Fz7" kind="relationship" relationship="viewControllers" id="9kI-gZ-ydm"/>
+                        <segue destination="rE6-sq-3jV" kind="relationship" relationship="viewControllers" id="DEx-g7-6U2"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CVt-he-5ei" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-685" y="176"/>
+            <point key="canvasLocation" x="-689" y="248"/>
         </scene>
         <!--Splash View Controller-->
         <scene sceneID="yMD-yb-ADK">
@@ -183,7 +163,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vx9-SA-9gU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="774" y="861"/>
+            <point key="canvasLocation" x="1300" y="861"/>
         </scene>
         <!--Login Controller-->
         <scene sceneID="wqe-Pd-z1W">
@@ -317,7 +297,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jjm-No-fIx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1118" y="846"/>
+            <point key="canvasLocation" x="1644" y="846"/>
         </scene>
         <!--Login Web View Controller-->
         <scene sceneID="aYd-BU-hNb">
@@ -327,10 +307,10 @@
                         <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FN6-6K-AWg">
+                            <webView contentMode="scaleToFill" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="75R-DE-96J">
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="332" id="L3d-2U-ltc"/>
+                                    <constraint firstAttribute="width" constant="332" id="FEv-Er-JVh"/>
                                 </constraints>
                             </webView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DdR-K3-qKI">
@@ -353,20 +333,20 @@
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="FN6-6K-AWg" firstAttribute="bottom" secondItem="yLW-BP-q1Y" secondAttribute="bottom" type="default" id="6de-Q3-BXf"/>
-                            <constraint firstItem="FN6-6K-AWg" firstAttribute="leading" secondItem="yLW-BP-q1Y" secondAttribute="leading" constant="-4" id="FVg-Nn-bf8"/>
+                            <constraint firstItem="75R-DE-96J" firstAttribute="top" secondItem="yLW-BP-q1Y" secondAttribute="top" type="default" id="FBc-q3-1TK"/>
                             <constraint firstItem="DdR-K3-qKI" firstAttribute="top" secondItem="yLW-BP-q1Y" secondAttribute="top" constant="10" id="Pm8-GF-zjR"/>
+                            <constraint firstItem="75R-DE-96J" firstAttribute="leading" secondItem="yLW-BP-q1Y" secondAttribute="leading" type="default" id="bSw-Jz-3po"/>
+                            <constraint firstItem="75R-DE-96J" firstAttribute="bottom" secondItem="yLW-BP-q1Y" secondAttribute="bottom" type="default" id="vRp-PS-xX3"/>
                             <constraint firstAttribute="trailing" secondItem="DdR-K3-qKI" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="w37-i1-FZH"/>
-                            <constraint firstItem="FN6-6K-AWg" firstAttribute="top" secondItem="yLW-BP-q1Y" secondAttribute="top" type="default" id="xl2-RF-vSz"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="webView" destination="FN6-6K-AWg" id="Sql-M7-j2u"/>
+                        <outlet property="webView" destination="75R-DE-96J" id="qSX-Xl-atT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lHc-RS-4uz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1551" y="163"/>
+            <point key="canvasLocation" x="2077" y="163"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="fjc-xp-Yom">
@@ -430,45 +410,22 @@
                     </connections>
                 </webView>
             </objects>
-            <point key="canvasLocation" x="2065" y="851"/>
+            <point key="canvasLocation" x="2591" y="851"/>
         </scene>
-        <!--Navigation Controller - EmpowerID-->
-        <scene sceneID="EsY-fT-yK6">
+        <!--Container View Controller-->
+        <scene sceneID="qRx-eM-Nxd">
             <objects>
-                <navigationController title="EmpowerID" id="4GP-Al-Rsh" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Home" image="home_24.png" id="exm-Mz-743"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="V0G-dy-UUC">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="rE6-sq-3jV" kind="relationship" relationship="rootViewController" id="Zsp-fN-kfV"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="50M-IZ-itV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController storyboardIdentifier="ContainerViewController" id="fy1-Za-Em7" customClass="ContainerViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="N1T-cj-GNb">
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="3AI-Yu-Lbs"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hKK-Eg-QVt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-270" y="-490"/>
-        </scene>
-        <!--Navigation Controller - My Requests-->
-        <scene sceneID="OY6-hO-JJH">
-            <objects>
-                <navigationController id="KXn-32-iJM" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="My Requests" image="lock_24.png" id="7dz-m3-aPO"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="0t1-7c-aIy">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="gHb-Uv-5gD" kind="relationship" relationship="rootViewController" id="3Nr-u6-z2Z"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ZSn-5S-UDQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-185" y="838"/>
+            <point key="canvasLocation" x="-689" y="-544"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="dbf-Cn-acW">
@@ -486,73 +443,13 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EHZ-Xq-eFd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1539" y="851"/>
+            <point key="canvasLocation" x="2065" y="851"/>
         </scene>
     </scenes>
     <resources>
-        <image name="app_globe_24.png" width="24" height="24"/>
         <image name="compare_headline_eid.png" width="97" height="32"/>
-        <image name="home_24.png" width="24" height="24"/>
-        <image name="lock_24.png" width="24" height="24"/>
         <image name="logo_header.jpg" width="960" height="444"/>
     </resources>
-    <classes>
-        <class className="HomeControllerViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/HomeControllerViewController.h"/>
-        </class>
-        <class className="LoginController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/LoginController.h"/>
-            <relationships>
-                <relationship kind="action" name="backgroundClicked:"/>
-                <relationship kind="action" name="endOnExit:" candidateClass="UITextField"/>
-                <relationship kind="action" name="loginClicked:"/>
-                <relationship kind="action" name="loginOtherClicked:"/>
-                <relationship kind="action" name="settingsClick:"/>
-                <relationship kind="outlet" name="progressIndicator" candidateClass="UIActivityIndicatorView"/>
-                <relationship kind="outlet" name="textPassword" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="textUsername" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="MainTabControllerViewController" superclassName="UITabBarController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MainTabControllerViewController.h"/>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="RequestsTableViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/RequestsTableViewController.h"/>
-        </class>
-        <class className="SSOLoginViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SSOLoginViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
-            </relationships>
-        </class>
-        <class className="SSOLoginWebViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SSOLoginWebViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="closeClicked:"/>
-                <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
-            </relationships>
-        </class>
-        <class className="SplashViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SplashViewController.h"/>
-        </class>
-        <class className="TaskDetailsViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/TaskDetailsViewController.h"/>
-        </class>
-        <class className="TaskTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/TaskTableViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="editingBegan:"/>
-                <relationship kind="action" name="updateRequested:"/>
-                <relationship kind="outlet" name="refreshControl" candidateClass="UIRefreshControl"/>
-            </relationships>
-        </class>
-        <class className="UIRefreshControl" superclassName="UIControl">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UIRefreshControl.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

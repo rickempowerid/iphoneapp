@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "JTRevealSidebarV2Delegate.h"
 
-@interface MainTabControllerViewController : UITabBarController
+@class SidebarViewController;
+@interface MainTabControllerViewController : UITabBarController <JTRevealSidebarV2Delegate, UITableViewDelegate> 
+
+
 
 @end

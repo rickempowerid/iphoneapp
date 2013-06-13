@@ -27,7 +27,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [Helpers setupLogoutButton:self];
+    //[Helpers setupLogoutButton:self];
 	// Do any additional setup after loading the view.
 }
 

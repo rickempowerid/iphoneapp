@@ -29,8 +29,9 @@
     [super viewDidLoad];
     self.taskData = [[NSMutableArray alloc] init];
     [self setupRefreshControl];
+    self.navigationController.toolbarHidden = YES;
     self.finishedLoading = [[NSArray alloc] init];
-    [Helpers setupLogoutButton:self];
+    //[Helpers setupLogoutButton:self];
     [self loadData: 0];
 
 }

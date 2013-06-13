@@ -125,9 +125,13 @@
 }
 -(void)transitionToView
 {
+    
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryBoard" bundle: nil];
-    UITabBarController *lvc = [storyboard instantiateViewControllerWithIdentifier:@"MainToolbar"];
-    [self presentViewController:lvc animated:NO completion: nil];
+    UIViewController *lvc = [storyboard instantiateViewControllerWithIdentifier:@"ContainerViewController"];
+    UINavigationController * navigationController = [[UINavigationController alloc]initWithRootViewController:lvc];
+    
+    
+    [self presentViewController:navigationController animated:NO completion: nil];
     //[self transitionFromViewController:self toViewController:lvc duration:1.0 options:UIViewAnimationOptionTransitionNone animations:nil completion:^(BOOL finished) {  }];
 }
 -(void) checkToken

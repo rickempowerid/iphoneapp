@@ -8,11 +8,21 @@
 
 #import "MainTabControllerViewController.h"
 #import "Helpers.h"
+#import "ViewController.h"
+#import "UIViewController+JTRevealSidebarV2.h"
+#import "UINavigationItem+JTRevealSidebarV2.h"
+#import "SidebarViewController.h"
+#import "NewViewController.h"
+
+
 @interface MainTabControllerViewController ()
 
 @end
 
 @implementation MainTabControllerViewController
+
+
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -27,8 +37,12 @@
 {
     
     [super viewDidLoad];
-    [Helpers setupLogoutButton:self];
-    [(UITabBarController*)self.navigationController.topViewController setSelectedIndex:2];
+    //[Helpers setupLogoutButton:self];
+    //[(UITabBarController*)self.navigationController.topViewController setSelectedIndex:2];
+
+    
+    self.navigationItem.revealSidebarDelegate = self;
+    
 	// Do any additional setup after loading the view.
 }
 
@@ -37,5 +51,7 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
 
 @end
