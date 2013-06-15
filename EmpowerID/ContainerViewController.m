@@ -9,11 +9,9 @@
 #import "ContainerViewController.h"
 #import "Helpers.h"
 #import "ViewController.h"
-#import "UIViewController+JTRevealSidebarV2.h"
-#import "UINavigationItem+JTRevealSidebarV2.h"
+#import "SettingsViewController.h"
+#import "UINavigationController+GZDrawer.h"
 #import "SidebarViewController.h"
-#import "NewViewController.h"
-
 @interface ContainerViewController ()
 
 @end
@@ -39,7 +37,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    
+    UINavigationController *nav = self.navigationController;
     
     self.label = [[UILabel alloc] initWithFrame:CGRectMake(30, 50, 260, 60)];
     self.label.backgroundColor = [UIColor clearColor];
@@ -48,8 +46,8 @@
     self.label.numberOfLines = 2;
     [self.view addSubview:self.label];
     
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"three_lines@2x"] style:UIBarButtonItemStyleBordered target:self action:@selector(revealLeftSidebar:)];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize target:self action:@selector(revealRightSidebar:)];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"three_lines@2x"] style:UIBarButtonItemStyleBordered target:self action:@selector(revealLeftSidebar)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize target:self action:@selector(revealRightSidebar)];
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryBoard" bundle: nil];
     UIViewController *tabs = [storyboard instantiateViewControllerWithIdentifier:@"MainToolbar"];
@@ -63,7 +61,9 @@
     
     //tabs.childNumberLabel.text=[NSString stringWithFormat:@"Child Number: %d",self.childNumber];
 
-    self.navigationItem.revealSidebarDelegate = self;
+    [nav addSwipeRecognizerForStyle:DrawerLayoutStyleRightAnchored withTarget:self selector:@selector(revealRightSidebar)];
+    [nav addSwipeRecognizerForStyle:DrawerLayoutStyleLeftAnchored withTarget:self selector:@selector(revealLeftSidebar)];
+
     
 }
 
@@ -74,29 +74,7 @@
 }
 #pragma mark Action
 
-- (void)revealLeftSidebar:(id)sender {
-    [self.navigationController toggleRevealState:JTRevealedStateLeft];
-}
-
-- (void)revealRightSidebar:(id)sender {
-    [self.navigationController toggleRevealState:JTRevealedStateRight];
-}
-
-- (void)pushNewViewController:(id)sender {
-    NewViewController *controller = [[NewViewController alloc] init];
-    controller.view.backgroundColor = [UIColor whiteColor];
-    controller.title = @"NewViewController";
-    controller.label.text = @"Pushed NewViewController";
-    [self.navigationController pushViewController:controller animated:YES];
-}
-
-#pragma mark JTRevealSidebarDelegate
-
-// This is an examle to configure your sidebar view through a custom UIViewController
-- (UIView *)viewForLeftSidebar {
-    // Use applicationViewFrame to get the correctly calculated view's frame
-    // for use as a reference to our sidebar's view
-    CGRect viewFrame = self.navigationController.applicationViewFrame;
+- (void)revealLeftSidebar {
     UITableViewController *controller = self.leftSidebarViewController;
     if ( ! controller) {
         self.leftSidebarViewController = [[SidebarViewController alloc] init];
@@ -104,40 +82,37 @@
         controller = self.leftSidebarViewController;
         controller.title = @"LeftSidebarViewController";
     }
-    controller.view.frame = CGRectMake(0, viewFrame.origin.y, 270, viewFrame.size.height);
-    controller.view.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleHeight;
-    return controller.view;
+    
+    self.navigationController.topViewController.view.backgroundColor = [UIColor redColor];
+    [self.navigationController pushDrawerViewController:self.leftSidebarViewController withStyle:DrawerLayoutStyleLeftAnchored animated:YES];
+
 }
 
-// This is an examle to configure your sidebar view without a UIViewController
-- (UIView *)viewForRightSidebar {
-    // Use applicationViewFrame to get the correctly calculated view's frame
-    // for use as a reference to our sidebar's view
-    CGRect viewFrame = self.navigationController.applicationViewFrame;
-    UITableView *view = self.rightSidebarView;
-    if ( ! view) {
-        view = self.rightSidebarView = [[UITableView alloc] initWithFrame:CGRectZero];
-        view.dataSource = self;
-        view.delegate = self;
-    }
-    view.frame = CGRectMake(self.navigationController.view.frame.size.width - 270, viewFrame.origin.y, 270, viewFrame.size.height);
-    view.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleHeight;
-    return view;
+- (void)revealRightSidebar {
+    
 }
 
-// Optional delegate methods for additional configuration after reveal state changed
-- (void)didChangeRevealedStateForViewController:(UIViewController *)viewController {
-    // Example to disable userInteraction on content view while sidebar is revealing
-    if (viewController.revealedState == JTRevealedStateNo) {
-        self.view.userInteractionEnabled = YES;
-    } else {
-        self.view.userInteractionEnabled = NO;
-    }
-}
+
 
 - (void)sidebarViewController:(SidebarViewController *)sidebarViewController didSelectObject:(NSObject *)object atIndexPath:(NSIndexPath *)indexPath {
     
-    [self.navigationController setRevealedState:JTRevealedStateNo];
+    
+    if(indexPath.row == 0)
+    {
+        [Helpers logout:self];
+    
+    }
+    else if(indexPath.row == 1)
+    {
+        SettingsViewController *con = [[SettingsViewController alloc] initWithNibName:@"SettingsViewController" bundle:nil];
+        self.view.userInteractionEnabled = YES;
+        [self.navigationController pushViewController:con animated:YES];
+        
+        
+    }
+    
+    return;
+    
     
     ViewController *controller = [[ViewController alloc] init];
     controller.view.backgroundColor = [UIColor viewFlipsideBackgroundColor];

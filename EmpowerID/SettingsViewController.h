@@ -10,6 +10,7 @@
 
 @interface SettingsViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UITextField *textHost;
+@property (weak, nonatomic) IBOutlet UITextField *textSSO;
 - (IBAction)doneAction:(id)sender;
 
 @end

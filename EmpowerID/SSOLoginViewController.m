@@ -121,7 +121,7 @@
 {
     //[self.refreshControl beginRefreshing];
     NSString *host = [Globals sharedManager].host;
-    NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys:host, @"domain", @"EmpowerID", @"serviceProvider", nil];
+    NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys:host, @"domain", [Globals sharedManager].SSOName, @"serviceProvider", nil];
     
     
     [Helpers LoadAction:@"/EmpowerIDWebIdPForms/GetSSOTiles" parameters:dict success:^(id JSON) {

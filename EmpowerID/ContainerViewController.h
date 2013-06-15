@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "JTRevealSidebarV2Delegate.h"
-@class SidebarViewController;
-@interface ContainerViewController : UIViewController<JTRevealSidebarV2Delegate>
+#import "SidebarViewController.h"
+@interface ContainerViewController : UIViewController
 
 @property (nonatomic, strong) SidebarViewController *leftSidebarViewController;
 @property (nonatomic, strong) UITableView *rightSidebarView;

@@ -27,11 +27,13 @@
 {
     [super viewDidLoad];
     self.textHost.text = [Globals sharedManager].host;
+    self.textSSO.text = [Globals sharedManager].SSOName;
     // Do any additional setup after loading the view from its nib.
 }
 - (void)viewWillDisappear:(BOOL)animated
 {
     [Globals sharedManager].host = self.textHost.text;
+    [Globals sharedManager].SSOName = self.textSSO.text;
 
 }
 

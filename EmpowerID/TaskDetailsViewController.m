@@ -101,10 +101,10 @@
 
 -(BOOL) showRespondActions: (NSDictionary*) d
 {
-    int taskStatus = (int)[d valueForKey:@"BusinessProcessTaskStatusID"];
-    int status = (int)[d valueForKey:@"BusinessProcessStatusID"];
+    NSString * taskStatus = [NSString stringWithFormat:@"%@", [d valueForKey:@"BusinessProcessTaskStatusID"]];
+    NSString *status = [NSString stringWithFormat:@"%@", [d valueForKey:@"BusinessProcessStatusID"]];
     
-    return taskStatus == 1 && (status==1 || status == 7 || status == 8);
+    return [taskStatus isEqualToString:@"1"] && ([status isEqualToString:@"1"] || [status isEqualToString:@"7"] || [status isEqualToString: @"8"]);
 }
 
 
@@ -137,9 +137,14 @@
             if([self showRespondActions:data])
             {
                 if(indexPath.row == 0)
+                {
+                    [cell setSelectionStyle:UITableViewCellSelectionStyleBlue];
                     cellText = @"Approve";
+                }
                 else
+                {
                     cellText = @"Reject";
+                }
                 
             }
             else

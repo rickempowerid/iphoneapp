@@ -258,9 +258,6 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <segue destination="aT0-3Y-k2J" kind="modal" id="zuL-G4-WED"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -293,6 +290,7 @@
                         <outlet property="progressIndicator" destination="3Tm-XX-kml" id="C0U-BE-Jvu"/>
                         <outlet property="textPassword" destination="ozt-HA-3ag" id="wbE-Rq-ZjP"/>
                         <outlet property="textUsername" destination="Hj4-5k-dOx" id="9hR-0J-YmH"/>
+                        <segue destination="bRX-1n-Qdj" kind="modal" id="Osf-lj-E21"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jjm-No-fIx" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -353,7 +351,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="SSOLoginViewController" id="bRX-1n-Qdj" customClass="SSOLoginViewController" sceneMemberID="viewController">
                     <tableView key="view" autoresizesSubviews="NO" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="72" sectionHeaderHeight="22" sectionFooterHeight="22" id="XNC-Dy-P2Z">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -427,29 +425,71 @@
             </objects>
             <point key="canvasLocation" x="-689" y="-544"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="dbf-Cn-acW">
-            <objects>
-                <navigationController id="aT0-3Y-k2J" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="YbV-Mr-m55">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="bRX-1n-Qdj" kind="relationship" relationship="rootViewController" id="Kac-4R-VJt"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="EHZ-Xq-eFd" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2065" y="851"/>
-        </scene>
     </scenes>
     <resources>
         <image name="compare_headline_eid.png" width="97" height="32"/>
         <image name="logo_header.jpg" width="960" height="444"/>
     </resources>
+    <classes>
+        <class className="ContainerViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ContainerViewController.h"/>
+        </class>
+        <class className="HomeControllerViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/HomeControllerViewController.h"/>
+        </class>
+        <class className="LoginController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/LoginController.h"/>
+            <relationships>
+                <relationship kind="action" name="backgroundClicked:"/>
+                <relationship kind="action" name="endOnExit:" candidateClass="UITextField"/>
+                <relationship kind="action" name="loginClicked:"/>
+                <relationship kind="action" name="loginOtherClicked:"/>
+                <relationship kind="action" name="settingsClick:"/>
+                <relationship kind="outlet" name="progressIndicator" candidateClass="UIActivityIndicatorView"/>
+                <relationship kind="outlet" name="textPassword" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="textUsername" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="MainTabControllerViewController" superclassName="UITabBarController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MainTabControllerViewController.h"/>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="RequestsTableViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RequestsTableViewController.h"/>
+        </class>
+        <class className="SSOLoginViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SSOLoginViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
+            </relationships>
+        </class>
+        <class className="SSOLoginWebViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SSOLoginWebViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="closeClicked:"/>
+                <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
+            </relationships>
+        </class>
+        <class className="SplashViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SplashViewController.h"/>
+        </class>
+        <class className="TaskDetailsViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TaskDetailsViewController.h"/>
+        </class>
+        <class className="TaskTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TaskTableViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="editingBegan:"/>
+                <relationship kind="action" name="updateRequested:"/>
+                <relationship kind="outlet" name="refreshControl" candidateClass="UIRefreshControl"/>
+            </relationships>
+        </class>
+        <class className="UIRefreshControl" superclassName="UIControl">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UIRefreshControl.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

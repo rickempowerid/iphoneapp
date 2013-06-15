@@ -53,6 +53,19 @@
     return tok;
 }
 
+- (void)setSSOName:(NSString *)s {
+    NSLog(@"writing SSOName:%@", s);
+    [[NSUserDefaults standardUserDefaults] setObject:s forKey:@"SSOName"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (NSString *)SSOName {
+    
+    NSString* tok = [[NSUserDefaults standardUserDefaults] valueForKey:@"SSOName"];
+    NSLog(@"retrieved SSOName:%@", tok);
+    return tok;
+}
+
 #pragma mark Singleton Methods
 
 + (id)sharedManager {
