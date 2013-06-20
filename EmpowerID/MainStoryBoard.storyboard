@@ -258,6 +258,9 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="loginOtherClicked:" destination="vfy-Vy-AoQ" eventType="touchUpInside" id="eln-1i-gSo"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -393,20 +396,8 @@
                             <outlet property="delegate" destination="bRX-1n-Qdj" id="oZS-iz-oAs"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="0q6-8o-qKz"/>
-                    <connections>
-                        <outlet property="webView" destination="e3I-Wd-mT0" id="NdJ-zE-n1b"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oTK-fT-J5q" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <webView hidden="YES" contentMode="top" scalesPageToFit="YES" id="e3I-Wd-mT0">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                    <connections>
-                        <outlet property="delegate" destination="bRX-1n-Qdj" id="wox-cZ-7tT"/>
-                    </connections>
-                </webView>
             </objects>
             <point key="canvasLocation" x="2591" y="851"/>
         </scene>
@@ -461,9 +452,6 @@
         </class>
         <class className="SSOLoginViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SSOLoginViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
-            </relationships>
         </class>
         <class className="SSOLoginWebViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SSOLoginWebViewController.h"/>

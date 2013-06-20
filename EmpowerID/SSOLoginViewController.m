@@ -31,7 +31,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+
     UIBarButtonItem *but = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:self action:@selector(backClicked)];
     
     self.navigationItem.leftBarButtonItem = but;
@@ -99,22 +99,22 @@
 {
     NSDictionary *tile = [self.ssoData objectAtIndex:indexPath.row];
     
-        static NSString *identifier = @"SSOCell";
-        NSString *path = [Helpers getQueryString:[tile valueForKey:@"Icon"]];
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
-        
-        UIImageView *imageView = (UIImageView *)[cell viewWithTag:100];
-        //recipeImageView.image = [imageArray objectAtIndex:indexPath.section * noOfSection + indexPath];
-        
-        [imageView setImageWithURL:[NSURL URLWithString:path] placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
-        
-        UILabel *labelView = (UILabel *)[cell viewWithTag:101];
-        
-        labelView.text = [tile valueForKey:@"Title"];
-        
-        
-        return cell;
-        
+    static NSString *identifier = @"SSOCell";
+    NSString *path = [Helpers getQueryString:[tile valueForKey:@"Icon"]];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
+    
+    UIImageView *imageView = (UIImageView *)[cell viewWithTag:100];
+    //recipeImageView.image = [imageArray objectAtIndex:indexPath.section * noOfSection + indexPath];
+    
+    [imageView setImageWithURL:[NSURL URLWithString:path] placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
+    
+    UILabel *labelView = (UILabel *)[cell viewWithTag:101];
+    
+    labelView.text = [tile valueForKey:@"Title"];
+    
+    
+    return cell;
+    
     }
 
 -(void)loadData

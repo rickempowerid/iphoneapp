@@ -65,9 +65,11 @@
 - (NSString*)getTokenFromCookie {
     NSHTTPCookie *cookie;
     NSHTTPCookieStorage *cookieJar = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+    
     for (cookie in [cookieJar cookies]) {
+        NSLog([NSString stringWithFormat:@"%@", cookieJar]);
         if ([[cookie domain] isEqualToString:[Globals sharedManager].host]) {
-            if ([[cookie name] isEqualToString:@"oauth_token"]) {
+            if ([[cookie name] isEqualToString:@"1oauth_token"]) {
                 return [cookie value];
             }
         }
@@ -81,9 +83,7 @@
 {
     NSString *html = [self.webView stringByEvaluatingJavaScriptFromString:
                       @"document.body.innerHTML"];
-    //NSLog(html);
-    
-    return;
+
     
     NSString* token = [self getTokenFromCookie];
     if (token != nil) {

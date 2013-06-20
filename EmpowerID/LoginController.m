@@ -35,8 +35,9 @@
 }
 
 - (IBAction)loginOtherClicked:(id)sender {
-    SSOLoginViewController *con = [[SSOLoginViewController alloc] initWithNibName:@"SSOLoginViewController" bundle:nil];
-    [self presentViewController:con animated:YES completion:nil];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryBoard" bundle: nil];
+    SSOLoginViewController *lvc = [storyboard instantiateViewControllerWithIdentifier:@"SSOLoginViewController"];
+    [self presentViewController:lvc animated:YES completion:nil];
     
 }
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
