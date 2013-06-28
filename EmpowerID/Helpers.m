@@ -70,7 +70,29 @@
     
     [operation start];
 }
-
++(BOOL)ProcessOauthResponse:(id) JSON
+{
+    [Globals sharedManager].token = (NSString*)[JSON objectForKey:@"access_token"];
+    
+    
+    
+    
+    if([[Globals sharedManager].token isEqualToString:@""])
+    {
+        [Helpers showMessageBox:@"Failure" description:(NSString*)[JSON objectForKey:@"error"]];
+        return NO;
+    }
+    else
+    {
+        
+        int integer = (int)[JSON objectForKey:@"expires_in"];
+        NSDate *expires = [[NSDate date] dateByAddingTimeInterval:(60*integer)];
+        
+        [Globals sharedManager].refreshtoken = (NSString*)[JSON objectForKey:@"refresh_token"];
+        [Globals sharedManager].expires = expires;
+        return YES;
+    }
+}
 +(void)LoadAction:(NSString*)path parameters:(NSDictionary*)parameters success:(void (^)(id JSON))success
           failure:(void (^)(NSError *error, id JSON))failure addAuthHeader:(BOOL)addAuthHeader
 {

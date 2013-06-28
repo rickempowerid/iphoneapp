@@ -8,12 +8,22 @@
 
 #import "SSOLoginWebViewController.h"
 #import "Globals.h"
+#import "Helpers.h"
+#import "MainTabControllerViewController.h"
 @implementation SSOLoginWebViewController
 @synthesize webView, authenticateUrl;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    NSHTTPCookie *cookie;
+    NSHTTPCookieStorage *cookieJar = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+    for (cookie in [cookieJar cookies]) {
+        if ([[cookie domain] isEqualToString:[Globals sharedManager].host]) {
+            [[NSHTTPCookieStorage sharedHTTPCookieStorage] deleteCookie:cookie];
+        }
+    }
+    
     
     //self.webView.delegate = self;
     //[self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.google.com"]]];
@@ -69,7 +79,7 @@
     for (cookie in [cookieJar cookies]) {
         NSLog([NSString stringWithFormat:@"%@", cookieJar]);
         if ([[cookie domain] isEqualToString:[Globals sharedManager].host]) {
-            if ([[cookie name] isEqualToString:@"1oauth_token"]) {
+            if ([[cookie name] isEqualToString:@"oauth_token"]) {
                 return [cookie value];
             }
         }
@@ -87,9 +97,25 @@
     
     NSString* token = [self getTokenFromCookie];
     if (token != nil) {
-        //[self.delegate gotToken:token];
-        [self.navigationController popViewControllerAnimated:YES];
-        [self.navigationController popViewControllerAnimated:YES];
+        token = [webView stringByEvaluatingJavaScriptFromString: @"document.body.innerHTML"];
+        NSLog(token);
+        NSData *jsonData = [token dataUsingEncoding:NSUTF8StringEncoding];
+        NSError *error;
+        NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers|NSJSONReadingAllowFragments error:&error];
+        
+        if (! jsonDict) {
+            NSLog(@"Got an error: %@", error);
+        } else {
+            if([Helpers ProcessOauthResponse: jsonDict])
+            {
+                UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryBoard" bundle: nil];
+                MainTabControllerViewController *viewCon = [storyboard instantiateViewControllerWithIdentifier:@"MainToolbar"];
+
+                [[UIApplication sharedApplication].delegate.window setRootViewController:viewCon];
+            
+            }
+        }
+        
     }
 }
 

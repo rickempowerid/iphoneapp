@@ -19,4 +19,5 @@ extern NSString* token;
 +(void)showMessageBox: (NSString *)message description:(NSString*)description;
 +(void)logout: (UIViewController*)view;
 +(NSString*)getQueryString: (NSString*)path;
++(BOOL)ProcessOauthResponse:(id) JSON;
 @end

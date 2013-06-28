@@ -116,24 +116,10 @@
                                                                                             
                                                                                             //NSLog((NSString*)[Helpers getToken]);
                                                                                             
-                                                                                            [Globals sharedManager].token = (NSString*)[JSON objectForKey:@"access_token"];
-                                                                                            
-                                                                                            
-                                                                                            
-                                                                                            
-                                                                                            if([[Globals sharedManager].token isEqualToString:@""])
+                                                                                            if([Helpers ProcessOauthResponse: JSON])
                                                                                             {
-                                                                                                [Helpers showMessageBox:@"Failure" description:(NSString*)[JSON objectForKey:@"error"]];
                                                                                             
-                                                                                            }
-                                                                                            else
-                                                                                            {
                                                                                                 
-                                                                                                int integer = (int)[JSON objectForKey:@"expires_in"];
-                                                                                                NSDate *expires = [[NSDate date] dateByAddingTimeInterval:(60*integer)];
-                                                                                                
-                                                                                                [Globals sharedManager].refreshtoken = (NSString*)[JSON objectForKey:@"refresh_token"];
-                                                                                                [Globals sharedManager].expires = expires;
                                                                                                 [self transitionToView];
 
                                                                                             }
