@@ -68,6 +68,7 @@
 		1D88FD461766E1AE006A1D88 /* SidebarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D88FD421766E1AD006A1D88 /* SidebarViewController.m */; };
 		1D88FD471766E1AE006A1D88 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D88FD441766E1AE006A1D88 /* ViewController.m */; };
 		1D88FD4A1769381A006A1D88 /* ContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D88FD491769381A006A1D88 /* ContainerViewController.m */; };
+		1D88FD4D176C2B21006A1D88 /* UINavigationController+GZDrawer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D88FD4C176C2B21006A1D88 /* UINavigationController+GZDrawer.m */; };
 		1D97757317504FA600CD156F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D97757217504FA600CD156F /* QuartzCore.framework */; };
 		1D977576175054D100CD156F /* glassboard.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D977574175054D100CD156F /* glassboard.png */; };
 		1D977577175054D100CD156F /* three_lines@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D977575175054D100CD156F /* three_lines@2x.png */; };
@@ -183,6 +184,8 @@
 		1D88FD441766E1AE006A1D88 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ViewController.m; path = ../ViewController.m; sourceTree = "<group>"; };
 		1D88FD4817693819006A1D88 /* ContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContainerViewController.h; sourceTree = "<group>"; };
 		1D88FD491769381A006A1D88 /* ContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContainerViewController.m; sourceTree = "<group>"; };
+		1D88FD4B176C2B20006A1D88 /* UINavigationController+GZDrawer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+GZDrawer.h"; sourceTree = "<group>"; };
+		1D88FD4C176C2B21006A1D88 /* UINavigationController+GZDrawer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+GZDrawer.m"; sourceTree = "<group>"; };
 		1D97757217504FA600CD156F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		1D977574175054D100CD156F /* glassboard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = glassboard.png; sourceTree = "<group>"; };
 		1D977575175054D100CD156F /* three_lines@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "three_lines@2x.png"; sourceTree = "<group>"; };
@@ -280,6 +283,8 @@
 				1D88FD3517603724006A1D88 /* SSOLoginWebViewController.m */,
 				1D88FD4817693819006A1D88 /* ContainerViewController.h */,
 				1D88FD491769381A006A1D88 /* ContainerViewController.m */,
+				1D88FD4B176C2B20006A1D88 /* UINavigationController+GZDrawer.h */,
+				1D88FD4C176C2B21006A1D88 /* UINavigationController+GZDrawer.m */,
 			);
 			path = EmpowerID;
 			sourceTree = "<group>";
@@ -506,6 +511,7 @@
 				1D88FD461766E1AE006A1D88 /* SidebarViewController.m in Sources */,
 				1D88FD471766E1AE006A1D88 /* ViewController.m in Sources */,
 				1D88FD4A1769381A006A1D88 /* ContainerViewController.m in Sources */,
+				1D88FD4D176C2B21006A1D88 /* UINavigationController+GZDrawer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
